@@ -1,0 +1,12 @@
+.d_footer {
+  height: 401px;
+  /* border: 1px solid red; */
+}
+.d_footer div {
+  width: 95em;
+}
+
+.d_footer span {
+  width: 20em;
+  margin-bottom: 80px;
+}
