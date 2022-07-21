@@ -1,0 +1,110 @@
+.content {
+  height: 80vh;
+  /* border: 1px solid blue; */
+}
+/* .col_right {
+  height: 100vh;
+} */
+.row_content {
+  height: 100vh;
+}
+.rectangle_xlarge {
+  width: 500px;
+  height: 500px;
+  -moz-transform: rotate(-15deg);
+  -webkit-transform: rotate(-15deg);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  background-color: #e2e5ed;
+}
+.rectangle_xlarge img {
+  -moz-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+}
+.rectangle_medium {
+  width: 118.59px;
+  height: 118.59px;
+  margin-top: 26em;
+  margin-right: 28em;
+  /* background-color: #5e50a1; */
+}
+.rectangle_xsmall {
+  width: 46px;
+  height: 46px;
+  left: 5.4em;
+  top: 5.8em;
+  /* background-color: #fbb017; */
+}
+.text_heading {
+  font-size: 44px;
+}
+
+/* article one */
+.rectangle_large {
+  width: 496px;
+  height: 389.85px;
+  -moz-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  background-color: #e2e5ed;
+}
+.rectangle_large img {
+  -moz-transform: rotate(-15deg);
+  -webkit-transform: rotate(-15deg);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+}
+.rectangle_small {
+  width: 90px;
+  height: 90px;
+  left: 12em;
+  margin-top: -26em;
+}
+
+/* article two */
+.box_img_two {
+  width: 496px;
+  height: 389.85px;
+  -moz-transform: rotate(-15deg);
+  -webkit-transform: rotate(-15deg);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+  background-color: #e2e5ed;
+  background-color: #e2e5ed;
+}
+.box_img_two img {
+  -moz-transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out;
+}
+
+.box_articleTwo {
+  width: 90px;
+  height: 90px;
+  margin-left: 29em;
+  margin-top: -26em;
+}
+/* article three */
+.card_caraousel {
+  width: 18rem;
+  display: flex;
+  align-items: center;
+}
+
+.card_caraousel img {
+  width: 120px;
+  height: 120px;
+}
+
+.box_bottom {
+  height: 227px;
+  margin-top: 8em;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 8px;
+}
