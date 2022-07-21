@@ -1,0 +1,7 @@
+.dropdown-toggle.remove-arrow::after {
+  display: none;
+}
+
+.dropdown-toggle.arrow-left::after {
+  display: none;
+}
