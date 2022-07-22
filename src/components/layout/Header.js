@@ -1,5 +1,6 @@
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
 import { Bell, Envelope } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 import Logo from './Logo'
 import Avatar from './Avatar'
 
@@ -10,7 +11,9 @@ const Header = () => {
     <Navbar className="bg-white py-2">
       <Container>
         <Navbar.Brand>
-          <Logo />
+          <Link to="/">
+            <Logo />
+          </Link>
         </Navbar.Brand>
         {token ? (
             <Nav>
@@ -37,7 +40,12 @@ const Header = () => {
                   <Avatar />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Test</Dropdown.Item>
+                  <Dropdown.Item>
+                    <Link to="/profile" style={{ textDecoration: 'none' }}>View Profile</Link>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    Logout
+                  </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Nav>
