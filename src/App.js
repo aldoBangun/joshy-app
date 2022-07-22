@@ -8,6 +8,8 @@ import RegisterUser from "./pages/register-user";
 import RegisterCompany from "./pages/register-company";
 import Forgot from "./pages/forgot";
 import Hiring from "./pages/hiring";
+import Profile from "./pages/profile/ProfileDetails";
+
 
 const App = () => {
   return (
@@ -24,6 +26,7 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/candidates" element={<Candidate />} />
             <Route path="/hiring" element={<Hiring />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>
