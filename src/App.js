@@ -3,6 +3,7 @@ import DisplayNav from "./pages/DisplayNav";
 import HideNav from "./pages/HideNav";
 import Candidate from "./pages/Candidate";
 import Landing from "./pages/landing/index";
+import Profile from "./pages/profile/ProfileDetails";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route element={<DisplayNav />}>
             <Route path="/" element={<Landing />} />
             <Route path="/candidates" element={<Candidate />} />
+            <Route path="/profile" element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

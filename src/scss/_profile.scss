@@ -1,0 +1,46 @@
+.portofolio-link {
+  &:hover {
+    p {
+      color: $warning;
+    }
+  } 
+
+  &:visited {
+    color: $dark;
+  }
+}
+
+.nav-tabs {
+  gap: 1rem;
+
+  .nav-link {
+    color: $secondary;
+    font-weight: 500;
+    padding-left: 0;
+    padding-right: 0;
+    border-color: transparent;
+    border: none;
+
+    &:hover {
+      color: $dark;
+    }
+    
+    &.active {
+      position: relative;
+      color: $dark;
+      border: none;
+      background-color: transparent;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background-color: $primary;
+        border-radius: 5px;
+      }
+    }
+  }
+}
