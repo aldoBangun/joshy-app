@@ -1,0 +1,40 @@
+.h_content {
+  height: 411px;
+}
+.card_profile {
+  height: 428px;
+  top: -300px;
+  width: 357px;
+}
+.card_profile img {
+  height: 150px;
+  width: 150px;
+  margin-left: 6.4em;
+}
+.card_form {
+  height: 1200px;
+  top: -300px;
+  border: 1px solid red;
+}
+.custome_file_upload {
+  padding: 5px 10px;
+  background: transparent;
+  position: relative;
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.hide_file {
+  position: absolute;
+  z-index: 1000;
+  opacity: 0;
+  cursor: pointer;
+  right: 0;
+  top: 0;
+  height: 100%;
+  font-size: 24px;
+  width: 100%;
+}
