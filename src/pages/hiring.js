@@ -88,7 +88,7 @@ const Hiring = () => {
                   <div className="d-flex flex-wrap gap-3 fs-3">
                     {skills.map((skill) => (
                       <Badge key={skill} bg="warning">
-                        {detailCandidate.skills}
+                        {skill}
                       </Badge>
                     ))}
                   </div>
