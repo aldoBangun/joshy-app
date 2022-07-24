@@ -1,11 +1,12 @@
-import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
-import { Bell, Envelope } from "react-bootstrap-icons";
+import { Navbar, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Logo from './Logo'
-import Avatar from './Avatar'
+import Logo from "./Logo";
+import NavUser from "./NavUser";
+import NavGuest from "./NavGuest";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const token = true
+  const { token } = useSelector(state => state.auth)
 
   return (
     <Navbar className="bg-white py-2">
@@ -15,54 +16,10 @@ const Header = () => {
             <Logo />
           </Link>
         </Navbar.Brand>
-        {token ? (
-            <Nav>
-              <Dropdown>
-                <Dropdown.Toggle className="bg-transparent text-bg-light border-0 remove-arrow" id="dropdown-basic">
-                  <Bell color="gray" />
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Test</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              
-              <Dropdown>
-                <Dropdown.Toggle className="bg-transparent text-bg-light border-0 remove-arrow" id="dropdown-basic">
-                  <Envelope color="gray" />
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Test</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            
-              <Dropdown>
-                <Dropdown.Toggle className="bg-transparent text-bg-light border-0 remove-arrow" id="dropdown-basic">
-                  <Avatar />
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item>
-                    <Link to="/profile" style={{ textDecoration: 'none' }}>View Profile</Link>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    Logout
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-            </Nav>
-          ) : (
-            <Nav className="d-flex gap-3">
-              <Nav.Item>
-                <Button variant="outline-primary">Masuk</Button>
-              </Nav.Item>
-              <Nav.Item>
-                <Button>Daftar</Button>
-              </Nav.Item>
-            </Nav>
-          )
-        }
+        {token ? <NavUser /> : <NavGuest />}
       </Container>
     </Navbar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
