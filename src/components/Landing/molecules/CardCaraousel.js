@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 import styles from "../../../css/landing.module.css";
 
 const CardCaraousel = (props) => {
-  const { src: inputSrc, title: inputTitle, subtitle: inputSubtitle } = props;
+  const { src: inputSrc, title: inputTitle, subtitle: inputSubtitle, message: inputMessage } = props;
   return (
     <>
       <Card className={`${styles.card_caraousel}`}>
@@ -21,8 +21,7 @@ const CardCaraousel = (props) => {
             {inputSubtitle}
           </Card.Subtitle>
           <Card.Text className="text-center mb-5">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {inputMessage}
           </Card.Text>
         </Card.Body>
       </Card>
