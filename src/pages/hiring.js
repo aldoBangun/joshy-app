@@ -14,7 +14,7 @@ const Hiring = () => {
             <Col className="d-grid align-items-center" lg={{ span: 4, offset: 1 }}>
               <Card className="" style={{ width: "24rem" }}>
                 <Card.Body>
-                  <img src="https://s3-alpha-sig.figma.com/img/792c/65bc/52b72a55a079dca3c59ba0db0eb236aa?Expires=1659312000&Signature=YgxX8dmP5E1kyjc7CvQ3KnEhXxdBgr9ql4xItMNxAfyHOTP9XNblxvEJsftkUhts6Bj9hu8yXaB7BxWec57~csFmq1V2zXAPSlxH9a69ane0AwV5wU4LBVA2w9cfn7TTLZWOP6y0KwGbD67YdhisWzYIvICGSpndNetAGzlAH2z~AJgQCnor0iUozW~-QiOwjQiBfj22lSEZ7BFQ3-Z66hTLfm3hZU17qNfPubViRMRinLjC0nhnsDh6vIhSHVQmqChMUH4Io6ABeeVFLW7Pu4Vi3OpiUD4E7lXhAz7B5hMelmEKizsWzcDKdwlTsj1oLRj3sIEYSw-1wWI2uf~0Ig__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" class="rounded-circle card-img-hire mt-3 mb-3 mx-auto d-flex justify-content-center" alt="150x150" />
+                  <img src="https://s3-alpha-sig.figma.com/img/792c/65bc/52b72a55a079dca3c59ba0db0eb236aa?Expires=1659312000&Signature=YgxX8dmP5E1kyjc7CvQ3KnEhXxdBgr9ql4xItMNxAfyHOTP9XNblxvEJsftkUhts6Bj9hu8yXaB7BxWec57~csFmq1V2zXAPSlxH9a69ane0AwV5wU4LBVA2w9cfn7TTLZWOP6y0KwGbD67YdhisWzYIvICGSpndNetAGzlAH2z~AJgQCnor0iUozW~-QiOwjQiBfj22lSEZ7BFQ3-Z66hTLfm3hZU17qNfPubViRMRinLjC0nhnsDh6vIhSHVQmqChMUH4Io6ABeeVFLW7Pu4Vi3OpiUD4E7lXhAz7B5hMelmEKizsWzcDKdwlTsj1oLRj3sIEYSw-1wWI2uf~0Ig__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" className="rounded-circle card-img-hire mt-3 mb-3 mx-auto d-flex justify-content-center" alt="150x150" />
                   <Card.Title>Lous Tomlinson</Card.Title>
                   <Card.Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</Card.Text>
                   <Card.Subtitle className="mb-2 text-muted">

@@ -97,7 +97,7 @@ const SectionTwo = () => {
           </div>
           <div className="col-6 d-flex justify-content-center d-flex align-items-center">
             <div className={styles.box_img_two}>
-              <img src={articleImgTwo} />
+              <img src={articleImgTwo} alt="articles" />
             </div>
             <div
               className={`bg-warning position-absolute ${styles.box_articleTwo}`}

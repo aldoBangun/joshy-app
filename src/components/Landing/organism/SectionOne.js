@@ -14,7 +14,7 @@ const SectionOne = () => {
         <div className={`row ${styles.row_content}`}>
           <div className="col-6 d-flex justify-content-center d-flex align-items-center">
             <div className={styles.rectangle_large}>
-              <img src={articleImgOne} />
+              <img src={articleImgOne} alt="articles" />
             </div>
             <div
               className={`bg-primary position-absolute ${styles.rectangle_small}`}
