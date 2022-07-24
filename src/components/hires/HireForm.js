@@ -63,7 +63,7 @@ const HireForm = () => {
                 <h1 className="mb-3">HIRE MESSAGE</h1>
                 <p className="mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod ipsum et dui rhoncus auctor.</p>
                  {isSubmited && <Alert variant="success">{successMessage}</Alert>}
-                 {isError && <Alert variant="danger">{errorMessage}</Alert>}
+                 {isError && <Alert variant="danger">Subject Message is required!</Alert>}
                 <Form.Group className="mb-4" controlId="formBasicPurpose">
                   <Form.Label>Tujuan tentang pesan ini</Form.Label>
                   <Form.Control size="lg" placeholder="Masukan judul pesan" onChange={(e) => setSubjectMessage(e.target.value)}/>
