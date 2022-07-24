@@ -9,11 +9,19 @@ import axios from "axios";
 const Hiring = () => {
   const [subjectMessage, setSubjectMessage] = useState('');
   const [description, setDescription] = useState('');
-  const [recruiterId, setRecruiterId] = useState(1);
-  const [profileId, setProfileId] = useState(2);
+/* 
+Login as recruiter
+recruiterId = redux current user logged in(id)
+profileId = selected profileId on userList
+*/
+  const recruiterId = 10;
+  const profileId = 2;
   const [detailCandidate, setDetailCandidate] = useState({});
   const [detailRecruiter, setDetailRecruiter] = useState({});
-  // const [skills, setSkills] = useState('');
+  const [skills, setSkills] = useState([]);
+  const config = {
+    headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibG9lYmlzLnRlY2hAZ21haWwuY29tIiwicHJvZmlsZVBpY3R1cmUiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9ub2N0dXJuY2xvdWQvaW1hZ2UvdXBsb2FkL3YxNjU4NjcxOTQwL2Fnd3ljbmdmN2t3d2docXRhNzBtLnBuZyIsImNvdmVySW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9ub2N0dXJuY2xvdWQvaW1hZ2UvdXBsb2FkL3YxNjU4NjUyNDg4L2d3MW0wY2xtNTNweG1sbW5xd21vLmpwZyIsInJvbGVJZCI6MSwiaWF0IjoxNjU4NjgzOTY0LCJleHAiOjE2NTg3NzAzNjR9.lK9AisKp_Eff_Gw5mpx36s5HLa9OXmxsQ8e3d6sAhNI`}
+  }
 
   useEffect ( () => {
    getDetailCandidate()
@@ -21,24 +29,18 @@ const Hiring = () => {
   }, [])
 
   const getDetailCandidate = () => {
-    const config = {
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzaG9wZWVAZ21haWwuY29tIiwicHJvZmlsZVBpY3R1cmUiOm51bGwsImNvdmVySW1hZ2UiOm51bGwsInJvbGVJZCI6MSwiaWF0IjoxNjU4NjAwODkwLCJleHAiOjE2NTg2ODcyOTB9.Z6wJAqiDmMFEyBslDNogG9ZWmiDGJ4u9PljMf6phJoQ`}
-    }
-    axios.get(`http://localhost:8000/profile/${profileId}`, config)
+    axios.get(`https://joshy-app.herokuapp.com/profile/${profileId}`, config)
     .then((res) =>{
         console.log(res)
         setDetailCandidate(res?.data)
-        // setSkills(res?.data?.skills)
+        setSkills(JSON.parse(res?.data?.skills))
     }).catch((err)=>{
       console.log(err)
     })
   }
 
   const getDetailRecruiter = () => {
-    const config = {
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzaG9wZWVAZ21haWwuY29tIiwicHJvZmlsZVBpY3R1cmUiOm51bGwsImNvdmVySW1hZ2UiOm51bGwsInJvbGVJZCI6MSwiaWF0IjoxNjU4NjAwODkwLCJleHAiOjE2NTg2ODcyOTB9.Z6wJAqiDmMFEyBslDNogG9ZWmiDGJ4u9PljMf6phJoQ`}
-    }
-    axios.get(`http://localhost:8000/profile/${recruiterId}`, config)
+    axios.get(`https://joshy-app.herokuapp.com/profile/${recruiterId}`, config)
     .then((res) =>{
         // console.log(res)
         setDetailRecruiter(res?.data)
@@ -46,17 +48,16 @@ const Hiring = () => {
       console.log(err)
     })
   }
+
   const handleHire = (e) => {
     e.preventDefault()
-    const config = {
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzaG9wZWVAZ21haWwuY29tIiwicHJvZmlsZVBpY3R1cmUiOm51bGwsImNvdmVySW1hZ2UiOm51bGwsInJvbGVJZCI6MSwiaWF0IjoxNjU4NjAwODkwLCJleHAiOjE2NTg2ODcyOTB9.Z6wJAqiDmMFEyBslDNogG9ZWmiDGJ4u9PljMf6phJoQ`}
-    }
     const bodyParam = {
       messageSubject: subjectMessage,
       description,
       recruiterId
     }
-    axios.post(`http://localhost:8000/profile/${profileId}/hires`, bodyParam, config)
+
+    axios.post(`https://joshy-app.herokuapp.com/profile/${profileId}/hires`, bodyParam, config)
     .then((res) => {
       console.log(res)
     }).catch((err) => {
@@ -66,7 +67,6 @@ const Hiring = () => {
   
 
   const roleId = 1
-  const skills = ["Phyton", "Laravel", "Golang", "JavaScript", "PHP", "HTML", "C++", "Kotlin", "Swift"];
   return (
     <>
     {(roleId === 1) && (<div className="Hiring">
@@ -76,7 +76,7 @@ const Hiring = () => {
             <Col className="d-grid align-items-center" lg={{ span: 4, offset: 1 }}>
               <Card className="" style={{ width: "24rem" }}>
                 <Card.Body>
-                  <img src="https://s3-alpha-sig.figma.com/img/792c/65bc/52b72a55a079dca3c59ba0db0eb236aa?Expires=1659312000&Signature=YgxX8dmP5E1kyjc7CvQ3KnEhXxdBgr9ql4xItMNxAfyHOTP9XNblxvEJsftkUhts6Bj9hu8yXaB7BxWec57~csFmq1V2zXAPSlxH9a69ane0AwV5wU4LBVA2w9cfn7TTLZWOP6y0KwGbD67YdhisWzYIvICGSpndNetAGzlAH2z~AJgQCnor0iUozW~-QiOwjQiBfj22lSEZ7BFQ3-Z66hTLfm3hZU17qNfPubViRMRinLjC0nhnsDh6vIhSHVQmqChMUH4Io6ABeeVFLW7Pu4Vi3OpiUD4E7lXhAz7B5hMelmEKizsWzcDKdwlTsj1oLRj3sIEYSw-1wWI2uf~0Ig__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" class="rounded-circle card-img-hire mt-3 mb-3 mx-auto d-flex justify-content-center" alt="150x150" />
+                  <img src={detailCandidate.profilePicture} class="rounded-circle card-img-hire mt-3 mb-3 mx-auto d-flex justify-content-center" alt="150x150" />
                   <Card.Title>{detailCandidate.name}</Card.Title>
                   <Card.Text>{detailCandidate.job}</Card.Text>
                   <Card.Subtitle className="mb-2 text-muted">
@@ -86,9 +86,9 @@ const Hiring = () => {
                   <Card.Text>{detailCandidate.description}</Card.Text>
                   <Card.Title className="mt-5">Skill</Card.Title>
                   <div className="d-flex flex-wrap gap-3 fs-3">
-                    {skills.map((skill) => (
-                      <Badge key={skill} bg="warning">
-                        {detailCandidate.skills}
+                    {skills.map((value) => (
+                      <Badge key={value} bg="warning">
+                        {value}
                       </Badge>
                     ))}
                   </div>

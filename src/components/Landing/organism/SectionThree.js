@@ -9,36 +9,23 @@ import "swiper/css";
 import "swiper/css/free-mode";
 // molecules
 import CardCaraousel from "../molecules/CardCaraousel";
-// image
-import articleImgTwo from "../../../images/articleTwo.png";
 // axios
 import axios from "axios";
 
 const SectionThree = () => {
-  const [listImg, setListImg] = React.useState([]);
-  const [detailCandidate, setDetailCandidate] = React.useState({});
-  const [userId, setUserId] = React.useState(1)
-
+  
+  const [testimonialData, setTestimonialData] = React.useState([]);
+  
   React.useEffect(() => {
-    const config = {
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJzaG9wZWVAZ21haWwuY29tIiwicHJvZmlsZVBpY3R1cmUiOm51bGwsImNvdmVySW1hZ2UiOm51bGwsInJvbGVJZCI6MSwiaWF0IjoxNjU4NjQ5OTYzLCJleHAiOjE2NTg3MzYzNjN9.TB9sEmIHEMgDeNz8n0VyuH2p23JU9aC2kkGLoMbnyDM`}
-    }
-    axios.get(`http://localhost:8000/profile/${userId}`, config)
-    .then((res) =>{
-        console.log(res)
-        setDetailCandidate(res?.data)
-    }).catch((err)=>{
-      console.log(err)
-    });
-    axios
-      .get("http://localhost:8000/testimonials")
-      .then((res) =>{
-        console.log(res)
-        setListImg(res?.data)
-    }).catch((err)=>{
-      console.log(err)
-    });
+    axios.get("https://joshy-app.herokuapp.com/testimonials")
+    .then(res => {
+      setTestimonialData(res.data)
+    })
+    .catch(err => {
+      console.log('err', err)
+    })
   },[]);
+
   return (
     <>
       <div className={`bg-light py-5 ${styles.content}`}>
@@ -51,17 +38,16 @@ const SectionThree = () => {
             className="mySwiper"
             slidesPerView={3}
           >
-            {listImg.map((item) => (
+            {testimonialData.map((data) => (
               <SwiperSlide>
                 <CardCaraousel
-                  src={articleImgTwo}
-                  title={item?.name}
-                  subtitle={item?.username}
+                src={data?.userInfo?.image}
+                title={data?.userInfo?.name}
+                subtitle={data?.userInfo?.subTitle}
+                message={data?.testimonialMessage}
                 />
-              
               </SwiperSlide>
             ))}
-      
           </Swiper>
         </Container>
       </div>
