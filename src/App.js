@@ -7,9 +7,9 @@ import Login from "./pages/login";
 import RegisterUser from "./pages/register-user";
 import RegisterCompany from "./pages/register-company";
 import Forgot from "./pages/forgot";
-import Hiring from "./pages/hiring";
+import Hiring from "./pages/Hiring";
 import Profile from "./pages/profile/ProfileDetails";
-
+import HireUserDetails from "./components/hires/HireUserDetails"
 
 const App = () => {
   return (
@@ -27,6 +27,7 @@ const App = () => {
             <Route path="/candidates" element={<Candidate />} />
             <Route path="/hiring" element={<Hiring />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/user" element={<HireUserDetails />} />
           </Route>
         </Routes>
       </BrowserRouter>
