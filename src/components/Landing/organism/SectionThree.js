@@ -41,7 +41,10 @@ const SectionThree = () => {
             {testimonialData.map((data) => (
               <SwiperSlide>
                 <CardCaraousel
-                  data={data}
+                src={data?.userInfo?.image}
+                title={data?.userInfo?.name}
+                subtitle={data?.userInfo?.subTitle}
+                message={data?.testimonialMessage}
                 />
               </SwiperSlide>
             ))}
