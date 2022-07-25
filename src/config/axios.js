@@ -7,8 +7,10 @@ const token = globalState?.auth?.token
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.request.use((config) => {
-  if(token) {
-    config.headers.Authorization = `Bearer ${token}`
+  if(config.category !== "AUTH" && token) {
+    config.headers = {
+      'Authorization' : `Bearer ${token}`
+    }
   }
 
   return config
