@@ -39,7 +39,7 @@ const SectionThree = () => {
             slidesPerView={3}
           >
             {testimonialData.map((data) => (
-              <SwiperSlide>
+              <SwiperSlide key={data?.userId}>
                 <CardCaraousel
                 src={data?.userInfo?.image}
                 title={data?.userInfo?.name}
