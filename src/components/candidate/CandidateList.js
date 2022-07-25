@@ -1,58 +1,43 @@
-import { Card, ListGroup } from "react-bootstrap";
+import React from "react";
+import { Alert, Card, ListGroup } from "react-bootstrap";
 import CandidateItem from "./CandidateItem";
+import axios from "axios";
 
-const CandidateList = () => {
-  const candidates = [
-    {
-      id: 1,
-      name: 'Alfredo Bangun',
-      job: 'Frontend Web Developer',
-      domicile: 'Kupang',
-      profile_picture: 'https://picsum.photos/id/1/200/200',
-      skills: ['JavaScript', 'HTML', 'CSS']
-    },
-    {
-      id: 2,
-      name: 'Wan Javar',
-      job: 'Frontend Web Developer',
-      domicile: 'Malang',
-      profile_picture: 'https://picsum.photos/id/2/200/200',
-      skills: ['React JS', 'Bootstrap']
-    },
-    {
-      id: 3,
-      name: 'Mikhael Kevin',
-      job: 'UI/UX Designer',
-      domicile: 'Bandung',
-      profile_picture: 'https://picsum.photos/id/3/200/200',
-      skills: ['Adobe XD', 'Figma']
-    },
-    {
-      id: 4,
-      name: 'Rahimatun Ni\'mah',
-      job: 'Backend Web Developer',
-      domicile: 'Surabaya',
-      profile_picture: 'https://picsum.photos/id/4/200/200',
-      skills: ['PostgreSQL', 'ExpressJS']
-    },
-    {
-      id: 5,
-      name: 'Verdy Lugara',
-      job: 'Full-Stack Web Developer',
-      domicile: 'Jakarta',
-      profile_picture: 'https://picsum.photos/id/5/200/200',
-      skills: ['PostgreSQL', 'Express JS', 'React JS', 'Bootstrap']
-    },
-  ]
+const CandidateList = (props) => {
+  const {searchData, sortData} = props;
+
+  const [candidatesData, setCandidatesData] = React.useState([]);
+  const [isError, setIsError] = React.useState(false);
+
+  //TOKEN
+  const config = { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsImVtYWlsIjoibG9lYmlzLnRlY2hAZ21haWwuY29tIiwicHJvZmlsZVBpY3R1cmUiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9ub2N0dXJuY2xvdWQvaW1hZ2UvdXBsb2FkL3YxNjU4NjcxOTQwL2Fnd3ljbmdmN2t3d2docXRhNzBtLnBuZyIsImNvdmVySW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9ub2N0dXJuY2xvdWQvaW1hZ2UvdXBsb2FkL3YxNjU4NjUyNDg4L2d3MW0wY2xtNTNweG1sbW5xd21vLmpwZyIsInJvbGVJZCI6MSwiaWF0IjoxNjU4NzQwNDMxLCJleHAiOjE2NTg4MjY4MzF9.sAgNkHdYA8sdBfnXJBaYu08aM0laoydsRWftZNxHjwU`}
+
+  React.useEffect(() => {
+    setIsError(false)
+    axios.get('https://joshy-app.herokuapp.com/users', {
+      headers: config,
+      params: {
+        sortBy: sortData,
+        value: searchData
+      }
+    })
+    .then((res) => {
+      setCandidatesData(res?.data)
+    })
+    .catch((err) => {
+      setIsError(true)
+    })
+  },[sortData, searchData])
 
   return (
     <>
       <Card className="shadow-lg border-0 my-5">
-        <ListGroup>
-          {candidates.map((candidate) => (
-            <CandidateItem key={candidate.id} {...candidate}/>
-          ))}
-        </ListGroup>
+      {isError ? <Alert variant="danger">Data not found!</Alert> : null}
+      <ListGroup>
+        {candidatesData?.map(data => (
+          <CandidateItem key={data.id} {...data}/>
+        ))}
+      </ListGroup>
       </Card>
     </>
   )
