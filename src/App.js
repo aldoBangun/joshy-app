@@ -9,7 +9,8 @@ import RegisterCompany from "./pages/register-company";
 import Forgot from "./pages/forgot";
 import Hiring from "./pages/hiring";
 import Profile from "./pages/profile/ProfileDetails";
-
+import EditProfileCandidate from "./pages/EditProfileCandidate";
+import EditCompany from "./pages/EditProfileCompany";
 
 const App = () => {
   return (
@@ -27,6 +28,8 @@ const App = () => {
             <Route path="/candidates" element={<Candidate />} />
             <Route path="/hiring" element={<Hiring />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/edit-candidate" element={<EditProfileCandidate />} />
+            <Route path="/edit-company" element={<EditCompany />} />
           </Route>
         </Routes>
       </BrowserRouter>

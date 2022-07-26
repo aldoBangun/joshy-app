@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 //css
 import styles from "../../../css/landing.module.css";
 //image

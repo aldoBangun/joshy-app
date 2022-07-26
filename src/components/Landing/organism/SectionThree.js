@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // css
 import styles from "../../../css/landing.module.css";
 import { Container, Button } from "react-bootstrap";
@@ -16,7 +16,7 @@ import axios from "axios";
 
 const SectionThree = () => {
   const [listImg, setListImg] = React.useState([]);
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => setListImg(res.data));
