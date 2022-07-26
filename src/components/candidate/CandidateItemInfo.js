@@ -1,8 +1,12 @@
 import { Badge } from "react-bootstrap";
 
 const CandidateItemInfo = (props) => {
-  const { name, job, domicile } = props
-  let newSkills = JSON.parse(props?.skills)
+  const { name, job, domicile } = props;
+  let newSkills = [];
+
+  if (props.skills) {
+    newSkills = JSON.parse(props?.skills);
+  }
 
   return (
     <div>
@@ -11,11 +15,13 @@ const CandidateItemInfo = (props) => {
       <p className="text-secondary mb-4">{domicile}</p>
       <div className="d-flex gap-1">
         {newSkills.map((data) => (
-          <Badge key={data} bg="warning" >{data}</Badge>
+          <Badge key={data} bg="warning">
+            {data}
+          </Badge>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CandidateItemInfo;

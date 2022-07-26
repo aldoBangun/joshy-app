@@ -1,8 +1,8 @@
 import { Image } from "react-bootstrap"
 
-const Avatar = () => {
+const Avatar = ( {image} ) => {
   return (
-    <Image src="https://picsum.photos/200/200" alt="user-image" height={24} width={24} roundedCircle />
+    <Image src={image} alt="user-image" height={24} width={24} roundedCircle />
   )
 }
 
