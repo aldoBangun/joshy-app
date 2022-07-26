@@ -3,12 +3,13 @@ import { Bell, Envelope } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Avatar from "./Avatar";
 import { logout } from "../../features/slices/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const NavUser = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const { loggedInUser } = useSelector(state => state.auth);
 
   const handleLogout = () => {
     dispatch(logout())
@@ -46,7 +47,7 @@ const NavUser = () => {
           className="bg-transparent text-bg-light border-0 remove-arrow"
           id="dropdown-basic"
         >
-          <Avatar />
+          <Avatar image={loggedInUser.profilePicture}/>
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item>
