@@ -3,7 +3,7 @@ import {
   createAsyncThunk,
   createEntityAdapter,
 } from "@reduxjs/toolkit";
-
+// cuma tes push
 import axios from "axios";
 const data = 2;
 // const config = {
