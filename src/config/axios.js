@@ -1,15 +1,20 @@
 import axios from "axios";
-import { store } from "../app/store";
 
-const globalState = store.getState()
-const token = globalState?.auth?.token
+const store = localStorage.getItem("persist:root")
+let token = null
+
+if(store) {
+  const storeJSON = JSON.parse(store)
+  const authJSON = JSON.parse(storeJSON.auth)
+  token = authJSON.token
+}
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 axios.interceptors.request.use((config) => {
-  if(config.category !== "AUTH" && token) {
+  if(config?.category !== "AUTH" && token) {
     config.headers = {
-      'Authorization' : `Bearer ${token}`
+      Authorization : `Bearer ${token}`
     }
   }
 
