@@ -2,8 +2,15 @@ import { Card, Image, Button } from "react-bootstrap";
 import { GeoAlt } from "react-bootstrap-icons";
 import ProfileCandidateSkills from "./ProfileCandidateSkills";
 import ProfileCandidateSocials from "./ProfileCandidateSocials";
+import { useSelector } from "react-redux";
 
 const ProfileCandidateInfo = (props) => {
+  const loggedInUser = useSelector(state => state.auth.loggedInUser);
+  const loggedInUserId = loggedInUser.id;
+  const loggedInUserRole = loggedInUser.roleId;
+  const isSameUser = loggedInUserId === props.id;
+  const isRecruiter = loggedInUserRole === 1;
+
   const { 
     profilePicture,
     name, 
@@ -34,7 +41,8 @@ const ProfileCandidateInfo = (props) => {
           <p>{description}</p>
         </div>
         <div className="d-grid">
-          <Button>Hire</Button>
+          {isRecruiter && <Button>Hire</Button>}
+          {isSameUser && <Button>Edit Profile</Button>}
         </div>
         <ProfileCandidateSkills skills={skills} />
         <ProfileCandidateSocials email={email} instagram={instagram} github={github} />

@@ -20,7 +20,7 @@ const Heading = () => {
               </p>
               <button
                 type="button"
-                class="btn btn-primary py-3 px-5 fw-bold mx-5 mt-5"
+                className="btn btn-primary py-3 px-5 fw-bold mx-5 mt-5"
               >
                 Mulai Dari Sekarang
               </button>
@@ -28,7 +28,7 @@ const Heading = () => {
           </div>
           <div className="col-6 d-flex justify-content-center d-flex align-items-center">
             <div className={styles.rectangle_xlarge}>
-              <img src={headImg} />
+              <img src={headImg} alt="heading" />
             </div>
             <div
               className={`position-absolute bg-primary ${styles.rectangle_medium}`}

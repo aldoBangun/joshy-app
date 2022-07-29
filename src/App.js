@@ -7,10 +7,11 @@ import Login from "./pages/login";
 import RegisterUser from "./pages/register-user";
 import RegisterCompany from "./pages/register-company";
 import Forgot from "./pages/forgot";
-import Hiring from "./pages/hiring";
+import Hiring from "./pages/Hiring";
 import Profile from "./pages/profile/ProfileDetails";
 import EditProfileCandidate from "./pages/EditProfileCandidate";
 import EditCompany from "./pages/EditProfileCompany";
+import HireUserDetails from "./components/hires/HireUserDetails"
 
 const App = () => {
   return (
@@ -30,6 +31,8 @@ const App = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/edit-candidate" element={<EditProfileCandidate />} />
             <Route path="/edit-company" element={<EditCompany />} />
+            <Route path="/profile/:userId" element={<Profile />} />
+            <Route path="/user" element={<HireUserDetails />} />
           </Route>
         </Routes>
       </BrowserRouter>

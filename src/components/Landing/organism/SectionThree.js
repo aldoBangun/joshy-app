@@ -9,8 +9,6 @@ import "swiper/css";
 import "swiper/css/free-mode";
 // molecules
 import CardCaraousel from "../molecules/CardCaraousel";
-// image
-import articleImgTwo from "../../../images/articleTwo.png";
 // axios
 import axios from "axios";
 
@@ -21,6 +19,7 @@ const SectionThree = () => {
       .get("https://jsonplaceholder.typicode.com/users")
       .then((res) => setListImg(res.data));
   });
+
   return (
     <>
       <div className={`bg-light py-5 ${styles.content}`}>
@@ -33,17 +32,16 @@ const SectionThree = () => {
             className="mySwiper"
             slidesPerView={3}
           >
-            {listImg.map((item) => (
-              <SwiperSlide>
+            {testimonialData.map((data) => (
+              <SwiperSlide key={data?.userId}>
                 <CardCaraousel
-                  src={articleImgTwo}
-                  title={item?.name}
-                  subtitle={item?.username}
+                src={data?.userInfo?.image}
+                title={data?.userInfo?.name}
+                subtitle={data?.userInfo?.subTitle}
+                message={data?.testimonialMessage}
                 />
-                ;
               </SwiperSlide>
             ))}
-            ;
           </Swiper>
         </Container>
       </div>

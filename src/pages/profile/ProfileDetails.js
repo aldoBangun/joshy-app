@@ -15,8 +15,15 @@ const ProfileDetails = () => {
     coverImage: "https://picsum.photos/id/1/1200/800" 
    }
 
+   const roleId = '2'
+
   return (
-    <ProfileCandidate profile={dummyProfile} />
+    <>
+      { (roleId === '2') ? (<ProfileCandidate profile={dummyProfile} />) : (
+          <h1>Profile Company</h1>
+        )
+      }
+    </>
   )
 }
 
