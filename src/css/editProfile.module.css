@@ -11,10 +11,13 @@
   width: 150px;
   margin-left: 6.4em;
 }
+.button_add_photo {
+  margin-top: -300px;
+}
 .card_form {
   height: 1200px;
   top: -300px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .custome_file_upload {
   padding: 5px 10px;

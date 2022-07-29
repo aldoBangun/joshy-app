@@ -12,7 +12,7 @@ function InputRadio() {
           <p className="text-right text-label tex-muted">Type aplikasi</p>
         </Col>
         <Col lg={2}>
-          <RadioButton
+          <Form.Check
             label="Aplikasi Web"
             id="radio-web"
             name="radio-1"
@@ -23,7 +23,7 @@ function InputRadio() {
           />
         </Col>
         <Col lg={4}>
-          <RadioButton
+          <Form.Check
             label="Aplikasi Mobile"
             id="radio-mobile"
             name="radio-2"

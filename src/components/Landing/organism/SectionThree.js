@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // css
 import styles from "../../../css/landing.module.css";
 import { Container, Button } from "react-bootstrap";
@@ -13,18 +13,12 @@ import CardCaraousel from "../molecules/CardCaraousel";
 import axios from "axios";
 
 const SectionThree = () => {
-  
-  const [testimonialData, setTestimonialData] = React.useState([]);
-  
-  React.useEffect(() => {
-    axios.get("https://joshy-app.herokuapp.com/testimonials")
-    .then(res => {
-      setTestimonialData(res.data)
-    })
-    .catch(err => {
-      console.log('err', err)
-    })
-  },[]);
+  const [listImg, setListImg] = React.useState([]);
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((res) => setListImg(res.data));
+  });
 
   return (
     <>
