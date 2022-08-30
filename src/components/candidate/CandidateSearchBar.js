@@ -14,24 +14,33 @@ const CandidateSearchBar = (props) => {
 
   const [sortByValue, setSortByValue] = React.useState('')
   const [searchValue, setSearchValue] = React.useState('')
+  const [dropdownItem, setDropDownItem] = React.useState('Sort')
 
-  const inputToSend = (searchValue, sortValue) => {
+  React.useEffect(() => {
+    if (sortByValue === 'name') setDropDownItem('Nama')
+    if (sortByValue === 'domicile') setDropDownItem('Lokasi')
+    if (sortByValue === 'skill') setDropDownItem('Skill')
+  }, [sortByValue])
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+
     searchInput(searchValue)
-    sortInput(sortValue)
+    sortInput(sortByValue)
   }
 
   return (
     <div className="bg-white rounded p-3 shadow-lg">
-      <Form>
+      <Form onSubmit={handleSearch}>
         <div className="d-flex gap-3">
           <div className="position-relative w-100 border-end border-1 border-dark pe-4">
-            <Form.Control type="text" placeholder="Search for any skills" className="bg-transparent border-0" onChange={e => setSearchValue(e?.target?.value)}/>
+            <Form.Control type="text" placeholder={`Search by ${sortByValue || 'name'}`} className="bg-transparent border-0" onChange={e => setSearchValue(e?.target?.value)}/>
             <Search size={24} color="gray" style={styleSearchIcon} />
           </div>
 
           <Dropdown>
             <Dropdown.Toggle className="bg-transparent text-bg-light border-0" id="dropdown-basic">
-              Sort
+              {dropdownItem}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onClick={() => setSortByValue('name')}>Nama</Dropdown.Item>
@@ -40,7 +49,7 @@ const CandidateSearchBar = (props) => {
             </Dropdown.Menu>
           </Dropdown>
           
-          <Button onClick={() => inputToSend(searchValue, sortByValue)}>Search</Button>
+          <Button type="submit">Search</Button>
         </div>
       </Form>
     </div>
