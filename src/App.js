@@ -9,6 +9,8 @@ import RegisterCompany from "./pages/register-company";
 import Forgot from "./pages/forgot";
 import Hiring from "./pages/Hiring";
 import Profile from "./pages/profile/ProfileDetails";
+import EditProfileCandidate from "./pages/EditProfileCandidate";
+import EditCompany from "./pages/EditProfileCompany";
 import HireUserDetails from "./components/hires/HireUserDetails"
 
 const App = () => {
@@ -26,6 +28,9 @@ const App = () => {
             <Route path="/" element={<Landing />} />
             <Route path="/candidates" element={<Candidate />} />
             <Route path="/hiring" element={<Hiring />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/edit-candidate" element={<EditProfileCandidate />} />
+            <Route path="/edit-company" element={<EditCompany />} />
             <Route path="/profile/:userId" element={<Profile />} />
             <Route path="/user" element={<HireUserDetails />} />
           </Route>

@@ -6,6 +6,7 @@ const Input = (props) => {
     label: labelInput,
     type: typeInput,
     placeholder: placeholderInput,
+    onChnage: inputOnChange,
   } = props;
   return (
     <>
@@ -16,6 +17,7 @@ const Input = (props) => {
           placeholder={placeholderInput}
           size="sm"
           className="py-3 px-5 text-sm"
+          onChange={inputOnChange}
         />
       </Form.Group>
     </>
