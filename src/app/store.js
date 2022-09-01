@@ -1,7 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import testimonial from "../feature/TestimonialSlice";
-import profile from "../feature/ProfileSlice";
-import { configureStore, combineReducers } from "@reduxjs/toolkit";
+
 import storage from "redux-persist/lib/storage";
 import {
   persistReducer,
@@ -12,13 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import reducer from "./reducers";
-
-const reducers = combineReducers({
-  ...reducer,
-  testimonial,
-  profile
-});
+import reducers from "./reducers";
 
 const persistConfig = {
   key: "root",
