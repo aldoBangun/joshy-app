@@ -11,9 +11,15 @@ const ProfileCandidateSkills = ({ skills }) => {
     <div className="mt-3 mb-5">
       <h3>Skills</h3>
       <div className="d-flex gap-2 flex-wrap">
-        {arraySkills.map((skill,index) =>(
-          <Badge key={index} bg="warning" className="inline-block py-2 px-3"> {skill} </Badge>
-        ))}
+        {arraySkills.length ? (
+          <>
+            {arraySkills.map((skill,index) =>(
+              <Badge key={index} bg="warning" className="inline-block py-2 px-3"> {skill} </Badge>
+            ))}
+          </>
+        ) : (
+          <span>No Skills</span>
+        )}
       </div>
     </div>
   )

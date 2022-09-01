@@ -14,7 +14,7 @@ const SectionThree = () => {
     axios
       .get("https://joshy-app.herokuapp.com/testimonials")
       .then((res) => setListImg(res.data));
-  });
+  }, []);
 
   return (
     <>

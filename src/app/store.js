@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-
 import storage from "redux-persist/lib/storage";
 import {
   persistReducer,
+  persistStore,
   FLUSH,
   REHYDRATE,
   PAUSE,
@@ -13,8 +13,9 @@ import {
 import reducers from "./reducers";
 
 const persistConfig = {
-  key: "root",
+  key: "joshy",
   storage,
+  version: 1,
   whitelist: ["auth"],
 };
 
@@ -31,3 +32,5 @@ export const store = configureStore({
   },
   devTools: process.env.NODE_ENV !== "production",
 });
+
+export const persistor = persistStore(store);

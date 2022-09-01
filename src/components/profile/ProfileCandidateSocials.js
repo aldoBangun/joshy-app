@@ -12,11 +12,11 @@ const ProfileCandidateSocials = (props) => {
         </li>
         <li className="d-flex align-items-center gap-3 mb-3">
           <Instagram />
-          <p className="mb-0"> {instagram} </p>
+          <p className="mb-0"> {instagram ? instagram : '-'} </p>
         </li>
         <li className="d-flex align-items-center gap-3 mb-3">
           <Github />
-          <p className="mb-0"> {github} </p>
+          <p className="mb-0"> {github ? github : '-'} </p>
         </li>
       </ul>      
     </>

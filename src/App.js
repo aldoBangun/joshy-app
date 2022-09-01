@@ -12,6 +12,8 @@ import Profile from "./pages/profile/ProfileDetails";
 import EditProfileCandidate from "./pages/EditProfileCandidate";
 import EditCompany from "./pages/EditProfileCompany";
 import HireUserDetails from "./components/hires/HireUserDetails"
+import withAuth from "./hoc/withAuth";
+import withRedux from "./hoc/withRedux";
 
 const App = () => {
   return (
@@ -40,4 +42,7 @@ const App = () => {
   );
 };
 
-export default App;
+
+const AppWithAuth = withAuth(App);
+const AppWithRedux = withRedux(AppWithAuth);
+export default AppWithRedux;
