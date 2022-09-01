@@ -1,9 +1,12 @@
+import { combineReducers } from "@reduxjs/toolkit";
 import auth from "../features/slices/auth";
 import user from "../features/slices/user";
+import profile from "../feature/ProfileSlice"
 
-const reducer = {
+const reducers = combineReducers({
   auth,
-  user
-}
+  user,
+  profile
+})
 
-export default reducer;
+export default reducers;
