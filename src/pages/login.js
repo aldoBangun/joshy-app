@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authLogin } from "../features/thunks/auth";
+import { login } from "../features/thunks/auth";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const Login = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(authLogin({ email, password }))
+    dispatch(login({ email, password }))
   }
 
   useEffect(() => {

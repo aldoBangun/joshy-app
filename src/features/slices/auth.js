@@ -1,23 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
-import jwtDecode from "jwt-decode";
-import { authLogin } from "../thunks/auth";
+import { createSlice } from '@reduxjs/toolkit'
+import { login, register } from '../thunks/auth'
 
 const authSlice = createSlice({
-  name: "auth",
-  initialState: { token: null, loggedInUser: {} },
+  name: 'auth',
+  initialState: {
+    token: null,
+    error: null
+  },
   reducers: {
-    logout: (state) => {
-      state.token = null;
-      state.loggedInUser = {};
+    clearError: (state) => {
+      state.error = null
     },
+    logout: (state) => {
+      state.token = null
+      state.error = null
+    }
   },
   extraReducers: {
-    [authLogin.fulfilled]: (state, action) => {
-      state.token = action.payload;
-      state.loggedInUser = jwtDecode(action.payload);
+    [login.fulfilled]: (state, { payload }) => {
+      state.token = payload
+      state.error = null
+    },
+    [login.rejected]: (state, { payload }) => {
+      state.token = null
+      state.error = payload
+    },
+    [register.fulfilled]: (state, { payload }) => {
+      state.token = payload
+      state.error = null
+    },
+    [register.rejected]: (state, { payload }) => {
+      state.token = null
+      state.error = payload
     }
   }
-});
+})
 
-export const { logout } = authSlice.actions;
-export default authSlice.reducer;
+export const { clearError, logout } = authSlice.actions
+export default authSlice.reducer

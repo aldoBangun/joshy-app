@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { authRegister } from "../features/thunks/auth";
+import { register } from "../features/thunks/auth";
 
 const RegisterCompany = () => {
   const navigate = useNavigate();
@@ -35,7 +35,7 @@ const RegisterCompany = () => {
       return;
     }
 
-    dispatch(authRegister(user));
+    dispatch(register(user));
     navigate("/login");
   };
 

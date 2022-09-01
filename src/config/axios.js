@@ -1,32 +1,36 @@
-import axios from "axios";
+import axios from 'axios'
+import { store } from '../app/store'
+import { setLoading } from '../features/slices/loading'
 
-const store = localStorage.getItem("persist:root")
-let token = null
+const dispatch = store.dispatch
 
-if(store) {
-  const storeJSON = JSON.parse(store)
-  const authJSON = JSON.parse(storeJSON.auth)
-  token = authJSON.token
+axios.defaults.baseURL = process.env.REACT_APP_API_URL
+
+const select = state => state.auth.token
+
+const listener = () => {
+  const token = select(store.getState())
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 }
 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+store.subscribe(listener)
 
 axios.interceptors.request.use((config) => {
-  if(config?.category !== "AUTH" && token) {
-    config.headers = {
-      Authorization : `Bearer ${token}`
-    }
-  }
-
+  dispatch(setLoading(true))
   return config
+  
 }, (error) => {
-  return error
-});
+  dispatch(setLoading(false))
+  return Promise.reject(error)
+})
 
 axios.interceptors.response.use((config) => {
+  dispatch(setLoading(false))
   return config
+  
 }, (error) => {
-  return error
-});
+  dispatch(setLoading(false))
+  return Promise.reject(error)
+})
 
-export default axios;
+export default axios
