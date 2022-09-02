@@ -21,7 +21,7 @@ const CandidateItem = (props) => {
         ) : (
           <>
             <div className="bg-secondary d-flex align-items-center justify-content-center" style={styleImage}>
-              <Person size={48} color={"white"} />
+              <Person size={48} color="white" />
             </div>
           </>
         )}
