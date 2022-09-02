@@ -7,7 +7,7 @@ export const getUserPortofolios = createAsyncThunk('portofolio/getUserPortofolio
 })
 
 const portofolioAdapter = createEntityAdapter({
-  selectId: (portofolio) => portofolio.portofolioId
+  selectId: (portofolio) => portofolio.id
 })
 
 const portofolioSlice = createSlice({
