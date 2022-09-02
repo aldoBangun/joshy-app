@@ -14,7 +14,6 @@ const ProfileCandidate = () => {
     axios.get(`/profile/${userId}`)
       .then(res => {
         setProfile(res.data)
-        console.log(res.data)
       })
       .catch(err => {
         console.log(err)
@@ -27,7 +26,7 @@ const ProfileCandidate = () => {
     <>
       {profile && (
         <>
-          <ProfileCandidateCover coverImage={profile.coverImage} />
+          <ProfileCandidateCover coverImage={profile?.coverImage} />
           <Container style={styleContainer}>
             <Row>
               <Col lg={4}>

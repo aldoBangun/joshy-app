@@ -5,11 +5,11 @@ import ProfileCandidateSocials from "./ProfileCandidateSocials";
 import { useSelector } from "react-redux";
 
 const ProfileCandidateInfo = (props) => {
-  const loggedInUser = useSelector(state => state.auth.loggedInUser);
-  const loggedInUserId = loggedInUser.id;
-  const loggedInUserRole = loggedInUser.roleId;
-  const isSameUser = loggedInUserId === props.id;
-  const isRecruiter = loggedInUserRole === 1;
+  const loggedInUser = useSelector(state => state.currentUser.user);
+  const loggedInUserId = loggedInUser?.id;
+  const loggedInUserRole = loggedInUser?.roleId;
+  // const isSameUser = loggedInUserId === props?.id;
+  // const isRecruiter = loggedInUserRole === 1;
 
   const { 
     profilePicture,
@@ -57,8 +57,8 @@ const ProfileCandidateInfo = (props) => {
           <p>{description ? description : 'No description'}</p>
         </div>
         <div className="d-grid">
-          {isRecruiter && <Button>Hire</Button>}
-          {isSameUser && <Button>Edit Profile</Button>}
+          {/* {isRecruiter && <Button>Hire</Button>}
+          {isSameUser && <Button>Edit Profile</Button>} */}
         </div>
         <ProfileCandidateSkills skills={skills} />
         <ProfileCandidateSocials email={email} instagram={instagram} github={github} />
