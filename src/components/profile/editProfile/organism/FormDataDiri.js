@@ -1,73 +1,63 @@
-import React, { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom";
-// feature
-import {
-  getProfile,
-  profileSelector,
-  updateProfileCandidate,
-} from "../../../../feature/ProfileSlice";
-// atom
-import Input from "../atom/Input";
+import { updateUser } from "../../../../features/thunks/currentUser";
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 const FormDataDiri = () => {
-  const [name, setName] = useState("");
-  const [job, setJob] = useState("");
-  const [domicile, setDomicile] = useState("");
-  const [workPlace, setWorkPlace] = useState("");
-  const [description, setDescription] = useState("");
-  const [skills, setSkills] = useState([]);
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { id } = useParams();
+  const user = useSelector(state => state.currentUser.user);
+  const loading = useSelector(state => state.loading.isLoading);
+  let userSkillsJSON
 
-  const profile = useSelector((state) => profileSelector.selectById(state, id));
-  // const profile = useSelector(() => profileSelector.selectAll);
+  if (user?.skills) userSkillsJSON = JSON.parse(user?.skills)
+  const userSkills = userSkillsJSON?.join(", ")
 
-  useEffect(() => {
-    dispatch(getProfile());
-  }, [dispatch]);
+  const UserSchema = Yup.object().shape({
+    name: Yup.string().required(),
+    job: Yup.string(),
+    domicile: Yup.string(),
+    workplace: Yup.string(),
+    description: Yup.string(),
+    skills: Yup.string()
+  })
 
-  useEffect(() => {
-    if (profile) {
-      setName(profile.name);
-      setJob(profile.job);
-      setDomicile(profile.domicile);
-      setWorkPlace(profile.workPlace);
-      setDescription(profile.description);
-      setSkills(profile.skills);
+  const formik = useFormik({
+    initialValues: {
+      name: user?.name || '',
+      job: user?.job || '',
+      domicile: user?.domicile || '',
+      workplace: user?.workPlace || '',
+      description: user?.description || '',
+      skills: userSkills || ''
+    },
+    enableReinitialize: true,
+    validationSchema: UserSchema,
+    onSubmit: (values) => {
+      const userData = { 
+        ...values,
+        workPlace: values.workplace,
+        userId: user.id
+      }
+      
+      dispatch(updateUser(userData))
     }
-  }, [profile]);
-
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    await dispatch(
-      updateProfileCandidate({
-        id,
-        name,
-        job,
-        domicile,
-        workPlace,
-        description,
-        skills,
-      })
-    );
-    // navigate("/profile");
-  };
+  })
 
   return (
     <>
-      <Form onSubmit={handleUpdate} className="m-5">
+      <Form onSubmit={formik.handleSubmit} className="m-5">
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label className="text-muted fs-6">Nama</Form.Label>
           <Form.Control
             type="text"
             placeholder="Masukan nama"
+            autoFocus
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setName(e.target.value)}
+            name="name"
+            onChange={formik.handleChange}
+            value={formik.values.name}
           />
         </Form.Group>
 
@@ -78,7 +68,9 @@ const FormDataDiri = () => {
             placeholder="Masukan job"
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setJob(e.target.value)}
+            name="job"
+            onChange={formik.handleChange}
+            value={formik.values.job}
           />
         </Form.Group>
 
@@ -89,7 +81,9 @@ const FormDataDiri = () => {
             placeholder="Masukan domisili"
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setDomicile(e.target.value)}
+            name="domicile"
+            onChange={formik.handleChange}
+            value={formik.values.domicile}
           />
         </Form.Group>
 
@@ -100,7 +94,9 @@ const FormDataDiri = () => {
             placeholder="Masukan tempat kerja"
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setWorkPlace(e.target.value)}
+            name="workplace"
+            onChange={formik.handleChange}
+            value={formik.values.workplace}
           />
         </Form.Group>
 
@@ -111,7 +107,9 @@ const FormDataDiri = () => {
             rows={4}
             placeholder="Tuliskan deskripsi singkat"
             className="py-3 px-3"
-            onChange={(e) => setDescription(e.target.value)}
+            name="description"
+            onChange={formik.handleChange}
+            value={formik.values.description}
           />
         </Form.Group>
 
@@ -122,17 +120,16 @@ const FormDataDiri = () => {
             placeholder="Masukan skills"
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setSkills(e.target.value)}
+            name="skills"
+            onChange={formik.handleChange}
+            value={formik.values.skills}
           />
         </Form.Group>
 
         {/* Button */}
         <div className="d-grid gap-2">
-          <Button variant="primary" className="py-3 fw-bold mt-4" type="submit">
-            Simpan
-          </Button>
-          <Button variant="secondary" className="py-3 fw-bold">
-            Batal
+          <Button variant="primary" className="py-3 fw-bold mt-4" type="submit" disabled={loading}>
+            {loading ? 'Menyimpan...' :'Simpan'}
           </Button>
         </div>
       </Form>

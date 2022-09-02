@@ -20,7 +20,7 @@ const CandidateExperienceItem = (props) => {
 
       return `${years} year${years > 1 ? 's' : ''} ${modMonths} months`
     }
-
+    
     return totalMonth + " Months"
   };
 

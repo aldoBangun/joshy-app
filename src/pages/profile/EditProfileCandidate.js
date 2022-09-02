@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Card, Container, Tabs, Tab, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 // feature
-import { getProfile, profileSelector } from "../feature/ProfileSlice";
+import { getProfile, profileSelector } from "../../feature/ProfileSlice";
 // css
-import styles from "../css/editProfile.module.css";
+import styles from "../../css/editProfile.module.css";
 // organism
-import FormDataDiri from "../components/profile/editProfile/organism/FormDataDiri";
-import FormExperience from "../components/profile/editProfile/organism/FormExperience";
-import FormPortfolio from "../components/profile/editProfile/organism/FormPortfolio";
-import CandidateCard from "../components/profile/editProfile/organism/CandidateCard";
+import FormDataDiri from "../../components/profile/editProfile/organism/FormDataDiri";
+import FormExperience from "../../components/profile/editProfile/organism/FormExperience";
+import FormPortfolio from "../../components/profile/editProfile/organism/FormPortfolio";
+import CandidateCard from "../../components/profile/editProfile/organism/CandidateCard";
 
 const EditProfileCandidate = () => {
   const dispatch = useDispatch();
