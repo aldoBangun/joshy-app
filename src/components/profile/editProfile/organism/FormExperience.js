@@ -1,61 +1,41 @@
-import React, { useState, useEffect } from "react";
 import { Button, Row, Col, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-// feature
-import {
-  getProfile,
-  profileSelector,
-  saveWorkPlace,
-} from "../../../../feature/ProfileSlice";
-// atom
-import Input from "../atom/Input";
+import { addUserExperience } from "../../../../features/slices/experience";
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 const FormExperience = () => {
-  const [position, setPosition] = useState("");
-  const [companyName, setCompanyName] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [description, setDescription] = useState("");
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.currentUser.user)
+  const loading = useSelector(state => state.loading.isLoading)
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  // const { id } = useParams();
+  const ExperienceSchema = Yup.object().shape({
+    position: Yup.string().required(),
+    companyName: Yup.string().required(),
+    startDate: Yup.date(),
+    endDate: Yup.date(),
+    description: Yup.string()
+  })
 
-  const profile = useSelector(() => profileSelector.selectAll);
-
-  // useEffect(() => {
-  //   dispatch(getProfile());
-  // }, [dispatch]);
-
-  useEffect(() => {
-    if (profile) {
-      setPosition(profile.position);
-      setCompanyName(profile.companyName);
-      setStartDate(profile.startDate);
-      setEndDate(profile.endDate);
-      setDescription(profile.description);
+  const formik = useFormik({
+    initialValues: {
+      position: '',
+      companyName: '',
+      startDate: '',
+      endDate: '',
+      description: ''
+    },
+    validationSchema: ExperienceSchema,
+    onSubmit: (values) => {
+      const data = { ...values, userId: user.id }
+      dispatch(addUserExperience(data))
     }
-  }, [profile]);
-
-  const addWorkPlace = async (e) => {
-    e.preventDefault();
-    await dispatch(
-      saveWorkPlace({
-        position,
-        companyName,
-        startDate,
-        endDate,
-        description,
-      })
-    );
-    // navigate('/profile')
-  };
+  })
 
   return (
     <>
-      <Form className="m-5" onSubmit={addWorkPlace}>
-        {/* input posisi */}
+      <Form className="m-5" onSubmit={formik.handleSubmit}>
+
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label className="text-muted fs-6">Posisi</Form.Label>
           <Form.Control
@@ -63,11 +43,13 @@ const FormExperience = () => {
             placeholder="Web developer"
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setPosition(e.target.value)}
+            name="position"
+            onChange={formik.handleChange}
+            value={formik.values.position}
+
           />
         </Form.Group>
 
-        {/* input company & year */}
         <Row>
           <Col>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -79,7 +61,10 @@ const FormExperience = () => {
                 placeholder="PT Jhosy"
                 size="sm"
                 className="py-3 px-5 text-sm"
-                onChange={(e) => setCompanyName(e.target.value)}
+                name="companyName"
+                onChange={formik.handleChange}
+                value={formik.values.companyName}
+
               />
             </Form.Group>
           </Col>
@@ -91,7 +76,10 @@ const FormExperience = () => {
                 type="date"
                 size="sm"
                 className="py-3 px-5 text-sm"
-                onChange={(e) => setStartDate(e.target.value)}
+                name="startDate"
+                onChange={formik.handleChange}
+                value={formik.values.startDate}
+
               />
             </Form.Group>
           </Col>
@@ -103,13 +91,15 @@ const FormExperience = () => {
                 type="date"
                 size="sm"
                 className="py-3 px-5 text-sm"
-                onChange={(e) => setEndDate(e.target.value)}
+                name="endDate"
+                onChange={formik.handleChange}
+                value={formik.values.endDate}
+
               />
             </Form.Group>
           </Col>
         </Row>
 
-        {/* input text area description */}
         <Form.Group className="mb-5" controlId="exampleForm.ControlTextarea1">
           <Form.Label className="text-muted fs-6">Deskripsi singkat</Form.Label>
           <Form.Control
@@ -117,13 +107,18 @@ const FormExperience = () => {
             rows={4}
             placeholder="Deskripsikan pekerjaan anda"
             className="py-3 px-3"
-            onChange={(e) => setDescription(e.target.value)}
+            name="description"
+            onChange={formik.handleChange}
+            value={formik.values.description}
+
           />
         </Form.Group>
+
         <hr />
+
         <div className="d-grid gap-2">
-          <Button variant="primary" className="py-3 fw-bold mt-4" type="submit">
-            Tambah pengalaman kerja
+          <Button variant="primary" className="py-3 fw-bold mt-4" type="submit" disabled={loading}>
+            {loading ? 'Menambahkan Data' : 'Tambah pengalaman kerja'}
           </Button>
           <Button variant="secondary" className="py-3 fw-bold">
             Batal
