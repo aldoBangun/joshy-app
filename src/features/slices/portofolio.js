@@ -2,7 +2,18 @@ import { createSlice, createAsyncThunk, createEntityAdapter } from "@reduxjs/too
 import axios from 'axios'
 
 export const getUserPortofolios = createAsyncThunk('portofolio/getUserPortofolios', async (userId) => {
-  const response = await axios(`/profile/${userId}/portofolios`)
+  const response = await axios.get(`/profile/${userId}/portofolios`)
+  return response?.data
+})
+
+export const addUserPortofolio = createAsyncThunk('portofolio/addUserPortofolio', async (data) => {
+  await axios.post(`/profile/${data.userId}/portofolios`, data, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+  
+  const response = await axios.get(`profile/${data.userId}/portofolios`)
   return response?.data
 })
 
@@ -15,6 +26,9 @@ const portofolioSlice = createSlice({
   initialState: portofolioAdapter.getInitialState(),
   extraReducers: {
     [getUserPortofolios.fulfilled]: (state, { payload }) => {
+      portofolioAdapter.setAll(state, payload)
+    },
+    [addUserPortofolio.fulfilled]: (state, { payload }) => {
       portofolioAdapter.setAll(state, payload)
     }
   }
