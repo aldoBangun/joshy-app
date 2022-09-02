@@ -9,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const authSelector = useSelector((state) => state.auth)
+  const loading = useSelector(state => state.loading.isLoading)
   const navigate = useNavigate()
 
   const submitHandler = (e) => {
@@ -59,8 +60,8 @@ const Login = () => {
                   </Form.Label>
                 </Form.Group>
                 <div className="d-grid">
-                  <Button className="text-white" variant="warning" size="lg" type="submit">
-                    Masuk
+                  <Button className="text-white" variant="warning" size="lg" type="submit" disabled={loading}>
+                    {loading ? 'Masuk...' : 'Masuk'}
                   </Button>
                 </div>
 
