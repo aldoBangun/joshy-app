@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const NavUser = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { loggedInUser } = useSelector(state => state.auth);
+  const { user: loggedInUser } = useSelector(state => state.currentUser);
 
   const handleLogout = () => {
     dispatch(logout())
@@ -50,7 +50,7 @@ const NavUser = () => {
           className="bg-transparent text-bg-light border-0 remove-arrow"
           id="dropdown-basic"
         >
-          <Avatar image={loggedInUser.profilePicture}/>
+          <Avatar image={loggedInUser?.profilePicture}/>
         </Dropdown.Toggle>
         <Dropdown.Menu>
           <Dropdown.Item onClick={() => navigate('/candidates')}>

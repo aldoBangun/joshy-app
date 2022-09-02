@@ -18,7 +18,7 @@ const withAuth = (Component) => {
       }
   
       const decoded = jwtDecode(token)
-      const { userId, exp } = decoded
+      const { id: userId, exp } = decoded
       const EXP_DATE_IN_MILISECON = exp * 1000
 
       if (EXP_DATE_IN_MILISECON < Date.now()) {
