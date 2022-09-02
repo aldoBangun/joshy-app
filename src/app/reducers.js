@@ -4,13 +4,15 @@ import profile from "../feature/ProfileSlice"
 import loading from "../features/slices/loading";
 import currentUser from "../features/slices/currentUser";
 import portofolio from '../features/slices/portofolio'
+import experience from "../features/slices/experience";
 
 const reducers = combineReducers({
   auth,
   profile,
   loading,
   currentUser,
-  portofolio
+  portofolio,
+  experience
 })
 
 export default reducers;

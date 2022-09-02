@@ -3,15 +3,25 @@ import { Row, Col, Image } from "react-bootstrap";
 import { Building } from "react-bootstrap-icons";
 
 const CandidateExperienceItem = (props) => {
-  const { position, company_name, start_date, end_date, description, image } =
+  const { position, companyName: company_name, startDate: start_date, endDate: end_date, description, image } =
     props;
   const normalizeDate = (date) => moment(date).format("MMMM YYYY");
   const getTotalMonth = (start, end) => {
     const startDate = new moment(start);
     const endDate = new moment(end);
     const months = moment.duration(endDate.diff(startDate)).asMonths();
+    const totalMonth = Math.floor(months)
+    const MONTHS_IN_YEAR=12
+    let years
 
-    return Math.floor(months) + " Months";
+    if (totalMonth > 12) {
+      const modMonths = totalMonth % MONTHS_IN_YEAR
+      years = Math.floor(totalMonth / MONTHS_IN_YEAR)
+
+      return `${years} year${years > 1 ? 's' : ''} ${modMonths} months`
+    }
+
+    return totalMonth + " Months"
   };
 
   const startDate = normalizeDate(start_date);
