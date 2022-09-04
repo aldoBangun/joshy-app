@@ -5,6 +5,7 @@ import loading from "../features/slices/loading";
 import currentUser from "../features/slices/currentUser";
 import portofolio from '../features/slices/portofolio'
 import experience from "../features/slices/experience";
+import user from '../features/slices/user'
 
 const reducers = combineReducers({
   auth,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   loading,
   currentUser,
   portofolio,
-  experience
+  experience,
+  user
 })
 
 export default reducers;

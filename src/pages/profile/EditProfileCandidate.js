@@ -13,7 +13,6 @@ import CandidateCard from "../../components/profile/editProfile/organism/Candida
 
 const EditProfileCandidate = () => {
   const dispatch = useDispatch();
-  const profiles = useSelector(profileSelector.selectAll);
   useEffect(() => {
     dispatch(getProfile());
   }, [dispatch]);
@@ -35,7 +34,7 @@ const EditProfileCandidate = () => {
                 id="controlled-tab-example"
                 activeKey={key}
                 onSelect={(k) => setKey(k)}
-                className="fw-bold"
+                className="mb-2 border-0 px-5 pt-5"
               >
                 {/* Form Data diri */}
                 <Tab eventKey="dataDiri" title="Data Diri">
