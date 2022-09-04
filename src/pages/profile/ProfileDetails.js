@@ -1,4 +1,5 @@
 import ProfileCandidate from "../../components/profile/ProfileCandidate";
+import withRouteGuard from "../../hoc/withRouteGuard";
 
 const ProfileDetails = () => {
    const roleId = '2'
@@ -13,4 +14,5 @@ const ProfileDetails = () => {
   )
 }
 
-export default ProfileDetails;
+const ProfileDetailsWithRouteGuard = withRouteGuard(ProfileDetails)
+export default ProfileDetailsWithRouteGuard;

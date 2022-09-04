@@ -5,3 +5,7 @@
 .dropdown-toggle.arrow-left::after {
   display: none;
 }
+
+.full-height {
+  height: calc(100vh - var(--nav-height));
+}

@@ -2,7 +2,8 @@ import React, { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/thunks/auth";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
+import CryptoJS from 'crypto-js'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,6 +12,8 @@ const Login = () => {
   const authSelector = useSelector((state) => state.auth)
   const loading = useSelector(state => state.loading.isLoading)
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const redirectTo = searchParams.get('redirect')
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -20,10 +23,16 @@ const Login = () => {
   useEffect(() => {
     const { token } = authSelector
 
-    if (token) {
-      navigate("/")
+    if (token && redirectTo) {
+      const optimizedRedirectTo = redirectTo.split(' ').join('+')
+      const bytes = CryptoJS.AES.decrypt(optimizedRedirectTo, process.env.REACT_APP_CRYPTO_SECRET_KEY)
+      const pathname = bytes.toString(CryptoJS.enc.Utf8)
+      navigate(pathname)
+      return
     }
-  }, [navigate, authSelector])
+
+    if (token) navigate("/")
+  }, [navigate, authSelector, redirectTo])
 
   return (
     <div className="Login">
