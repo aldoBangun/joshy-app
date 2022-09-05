@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Col, Card, Row } from "react-bootstrap";
 // css
-import styles from "../css/editProfile.module.css";
+import styles from "../../css/editProfile.module.css";
 // organism
-import FormDataCompany from "../components/profile/editProfile/organism/FormDataCompany";
-import CompanyCard from "../components/profile/editProfile/organism/CompanyCard";
+import FormDataCompany from "../../components/profile/editProfile/organism/FormDataCompany";
+import CompanyCard from "../../components/profile/editProfile/organism/CompanyCard";
 
 const EditProfileCompany = () => {
   return (

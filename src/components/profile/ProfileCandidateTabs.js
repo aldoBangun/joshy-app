@@ -18,29 +18,6 @@ const ProfileCandidateTabs = () => {
     dispatch(getUserExperiences(userId))
   }, [userId, dispatch])
 
-  // const SIX_MONTH_IN_MILISECON = 1000 * 60 * 60 * 24 * 30 * 6;
-
-  // const experiences = [
-  //   {
-  //     id: 1,
-  //     position: 'Pirates',
-  //     company_name: 'Crusty Crab',
-  //     start_date: new Date().getTime() - SIX_MONTH_IN_MILISECON,
-  //     end_date: new Date().getTime(),
-  //     description: 'A place where you can order Craby Patty',
-  //     candidate_profile_id: 1
-  //   },
-  //   {
-  //     id: 2,
-  //     position: 'Pirates',
-  //     company_name: 'Crusty Crab',
-  //     start_date: new Date().getTime() - SIX_MONTH_IN_MILISECON,
-  //     end_date: new Date().getTime(),
-  //     description: 'A place where you can order Craby Patty',
-  //     candidate_profile_id: 1
-  //   }
-  // ]
-
   return (
     <>
       <Card className="border-0 p-4" style={{ minHeight: "20rem" }}>

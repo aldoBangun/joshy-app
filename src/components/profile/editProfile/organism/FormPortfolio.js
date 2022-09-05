@@ -1,59 +1,58 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-// feature
-import {
-  profileSelector,
-  savePortofolio,
-} from "../../../../feature/ProfileSlice";
-// atom
-import Input from "../atom/Input";
-// molecules
-import InputRadio from "../molecules/InputRadio";
+import { addUserPortofolio } from "../../../../features/slices/portofolio";
+import { useFormik } from "formik"
+import * as Yup from "yup"
 
 const FormPortfolio = () => {
-  const [appName, setAppName] = useState("");
-  const [link, setLink] = useState("");
-  const [type, setType] = useState("");
-  const [appPicture, setAppPicture] = useState(null);
-  //state input radio
-  const [radioTypeApp, setRadioTypeApp] = React.useState(null);
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const user = useSelector(state => state.currentUser.user);
+  const loading = useSelector(state => state.loading.isLoading);
+  const [imageFile, setImageFile] = useState('');
 
-  const profile = useSelector(() => profileSelector.selectAll);
+  const PortofolioSchema = Yup.object().shape({
+    appName: Yup.string().required(),
+    link: Yup.string().required(),
+    type: Yup.string().required(),
+    appPicture: Yup.string().required()
+  })
 
-  useEffect(() => {
-    setAppName(profile.appName);
-    setLink(profile.link);
-    setType(profile.type);
-    setAppPicture(profile.appPicture);
-  }, [profile]);
+  const formik = useFormik({
+    initialValues: {
+      appName: '',
+      link: '',
+      type: '',
+      appPicture: ''
+    },
+    validationSchema: PortofolioSchema,
+    onSubmit: (values) => {
+      const data = {
+        ...values,
+        userId: user?.id,
+        appPicture: imageFile
+      }
+      
+      dispatch(addUserPortofolio(data))
+    }
+  })
 
-  const addPortofolio = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("appName", appName);
-    formData.append("link", link);
-    formData.append("type", type);
-    formData.append("appPicture", appPicture);
-    await dispatch(
-      savePortofolio({
-        appName,
-        link,
-        type,
-        appPicture,
-      })
-    );
-    // navigate('/profile')
-  };
+  const handleImageUpload = (e) => {
+    const imageFile = e.target.files[0]
+    if (!imageFile) return setImageFile('')
+
+    setImageFile(imageFile)
+    formik.setFieldValue('appPicture', e.target.value)
+  }
+
+  const handleRadioButton = (e) => {
+    formik.setFieldValue('type', e.target.value)
+  }
 
   return (
     <>
-      <Form className="m-5" onSubmit={addPortofolio}>
-        {/* input name aplication */}
+      <Form className="m-5" onSubmit={formik.handleSubmit} encType="multipart/form-data">
+
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label className="text-muted fs-6">Nama aplikasi</Form.Label>
           <Form.Control
@@ -61,21 +60,25 @@ const FormPortfolio = () => {
             placeholder="Masukan nama apliksi"
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setAppName(e.target.value)}
+            name="appName"
+            onChange={formik.handleChange}
+            value={formik.values.appName}
           />
         </Form.Group>
-        {/* input link repo */}
+
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label className="text-muted fs-6">Link repository</Form.Label>
+          <Form.Label className="text-muted fs-6">Demo Link</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Masukan link repository"
+            placeholder="Masukan link aplikasi"
             size="sm"
             className="py-3 px-5 text-sm"
-            onChange={(e) => setLink(e.target.value)}
+            name="link"
+            onChange={formik.handleChange}
+            value={formik.values.link}
           />
         </Form.Group>
-        {/* input type apliksi */}
+
         <Row className="mb-2">
           <Col lg={3}>
             <p className="text-right text-label tex-muted">Type aplikasi</p>
@@ -84,45 +87,40 @@ const FormPortfolio = () => {
             <Form.Check
               label="Aplikasi Web"
               id="radio-web"
-              name="radio-1"
+              name="type"
               type="radio"
-              checked={radioTypeApp === 1 ? true : false}
-              onClick={() => {
-                setRadioTypeApp(1);
-              }}
               value="web"
-              onChange={(e) => setType(e.target.value)}
+              onChange={handleRadioButton}
             />
           </Col>
           <Col lg={4}>
             <Form.Check
               label="Aplikasi Mobile"
               id="radio-mobile"
-              name="radio-2"
+              name="type"
               type="radio"
-              checked={radioTypeApp === 2 ? true : false}
-              onClick={() => {
-                setRadioTypeApp(2);
-              }}
               value="mobile"
-              onChange={(e) => setType(e.target.value)}
+              onChange={handleRadioButton}
             />
           </Col>
         </Row>
-        {/* input upload image */}
+
         <Form.Group controlId="formFile" className="mb-5">
           <Form.Label className="text-muted">Upload gambar</Form.Label>
           <Form.Control
             type="file"
             size="lg"
-            onChange={(e) => setAppPicture(e.target.files[0])}
+            name="appPicture"
+            onChange={handleImageUpload}
+            value={formik.values.appPicture}
           />
         </Form.Group>
+        
         <hr />
-        {/* button */}
+
         <div className="d-grid gap-2">
-          <Button variant="primary" className="py-3 fw-bold mt-4" type="submit">
-            Simpan
+          <Button variant="primary" className="py-3 fw-bold mt-4" type="submit" disabled={loading} >
+            {loading ? 'Menyimpan' : 'Simpan'}
           </Button>
           <Button variant="secondary" className="py-3 fw-bold">
             Batal
