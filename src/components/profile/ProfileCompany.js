@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUser } from '../../features/thunks/user'
+import { Person } from 'react-bootstrap-icons'
 import ProfileCompanySocials from './ProfileCompanySocials'
 import '../../style/ProfileCompany.css'
 
@@ -20,7 +21,19 @@ const ProfileCompany = () => {
       {user && (
         <>
           <div className="bg-primary position-relative profile-cover" style={{ height: 200 }}>
-            <img src={user.profilePicture} alt={user.companyName} height={124} width={124} className="rounded-circle d-block mb-3 mx-auto profile-picture" />
+            {user.profilePicture ? (
+              <img
+                src={user.profilePicture}
+                alt={user.companyName}
+                height={124}
+                width={124}
+                className="rounded-circle d-block mb-3 mx-auto profile-picture"
+              />
+            ) : (
+              <div className="profile-picture d-flex align-items-center justify-content-center rounded-circle bg-warning mx-auto mb-3" style={{ height: 124, width: 124 }}>
+                <Person size={64} />
+              </div>
+            )}
           </div>
 
           <div className="d-flex justify-content-center text-center mb-5 position-relative">
