@@ -10,7 +10,7 @@
   <h3 align="center">Joshy(Jobs Huntsy)</h3>
 
   <p align="center">
-    <a href="#">View Demo</a>
+    <a href="https://joshy-app.web.app/" target="_blank">View Demo</a>
     ·
     <a href="https://github.com/aldoBangun/joshy-app/issues">Report Bug</a>
     ·
@@ -60,8 +60,14 @@ This app was built with some technologies below:
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Javascript](https://www.javascript.com/)
 - [React](https://reactjs.org/)
-- [Axios](https://axios-http.com/)
 - [React Redux](https://react-redux.js.org/introduction/getting-started)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Redux Persist](https://www.npmjs.com/package/redux-persist)
+- [React Router DOM v6](https://reactrouter.com/en/v6.3.0/getting-started/overview)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [CryptoJS](https://cryptojs.gitbook.io/docs/)
+- [Formik](https://formik.org)
+- [Axios](https://axios-http.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -197,7 +203,7 @@ Contributions are what make the open source community such an amazing place to b
     </tr>
     <tr>
     <td>
-    <a href="https://github.com/mikhaelkevin/joshy-back-end"> 
+    <a href="https://github.com/mikhaelkevin/joshy-back-end" target="_blank"> 
     <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" alt="be-github"/>
     </a>
     </td>
@@ -207,7 +213,7 @@ Contributions are what make the open source community such an amazing place to b
     <a/>
     </td>
     <td> 
-    <a href="#"> 
+    <a href="https://joshy-app.web.app/" target="_blank"> 
     <img src="https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white" alt="demo">
     <a/>
     </td>
@@ -228,35 +234,35 @@ Contributions are what make the open source community such an amazing place to b
   </tr>
     <tr>
       <td align="center">
-        <a href="https://github.com/mikhaelkevin">
+        <a href="https://github.com/mikhaelkevin" target="_blank">
           <img width="100" src="https://avatars.githubusercontent.com/u/102899084?s=400&u=618d13a4fa77ad80e7a2cb9349c250aef1be6e2f&v=4" alt="kevin"><br/>
           <sub><b>Mikhael Kevin</b></sub> <br/>
           <sub>Project Leader | Backend Dev</sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/aldoBangun">
+        <a href="https://github.com/aldoBangun" target="_blank">
           <img width="100" src="https://avatars.githubusercontent.com/u/58449615?v=4" alt="aldo"><br/>
           <sub><b>Aldo Bangun</b></sub> <br/>
           <sub>Frontend Dev</sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/Jafarammer">
+        <a href="https://github.com/Jafarammer" target="_blank">
           <img width="100" src="https://avatars.githubusercontent.com/u/73752464?v=4" alt="jafar"><br/>
           <sub><b>Jafar Ammer</b></sub> <br/>
           <sub>Frontend Dev</sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/rahimatunnimah">
+        <a href="https://github.com/rahimatunnimah" target="_blank">
           <img width="100" src="https://avatars.githubusercontent.com/u/59507749?v=4" alt="nimah"><br/>
-          <sub><b>Rahimatun Ni'mah</b></sub> <br/>Rahimatun Ni'mah
+          <sub><b>Rahimatun Ni'mah</b></sub> <br/>
           <sub>Backend Dev</sub>
         </a>
       </td>
       <td align="center">
-        <a href="https://github.com/VerdyNordsten">
+        <a href="https://github.com/VerdyNordsten" target="_blank">
           <img width="100" src="https://avatars.githubusercontent.com/u/51946708?v=4" alt="verdy"><br/>
           <sub><b>Verdy</b></sub> <br/>
           <sub>Frontend Dev</sub>
