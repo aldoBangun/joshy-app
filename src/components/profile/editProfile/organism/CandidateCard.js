@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import styles from "../../../../css/editProfile.module.css";
+import ProfileEditAvatar from "../../ProfileEditAvatar";
+import withRouteGuard from "../../../../hoc/withRouteGuard";
 
 const CandidateCard = () => {
   const profile = useSelector(state => state.currentUser.user);
@@ -13,11 +15,9 @@ const CandidateCard = () => {
       {
         profile && (
           <Card className={`shadow rounded p-3 ${styles.card_profile}`}>
-            <Card.Img
-              variant="top"
-              className="rounded-circle mt-4 border border-4 border-warning"
-              src={profile.profilePicture}
-            />
+            <div className="px-4">
+              <ProfileEditAvatar />
+            </div>
             
             <Card.Title className="mt-4 mb-2">{profile.name}</Card.Title>
             
@@ -42,4 +42,5 @@ const CandidateCard = () => {
   );
 };
 
-export default CandidateCard;
+const CandidateCardWithRouteGuard = withRouteGuard(CandidateCard)
+export default CandidateCardWithRouteGuard;
