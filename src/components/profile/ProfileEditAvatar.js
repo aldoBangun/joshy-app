@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Button, Form } from 'react-bootstrap'
-import { Pencil } from 'react-bootstrap-icons'
+import { Pencil, Person } from 'react-bootstrap-icons'
 import { updateUser } from '../../features/thunks/currentUser'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -73,13 +73,19 @@ const ProfileEditAvatar = () => {
     <>
       {user && (
         <>
-          <img 
-            className="edit-profile-avatar rounded-circle d-block mb-3"
-            src={imageURL ? imageURL : user.profilePicture}
-            alt="user-avatar"
-            height={200}
-            width={200}
-          />
+          {(user.profilePicture || imageURL) ? (
+            <img 
+              className="edit-profile-avatar rounded-circle d-block mb-3"
+              src={imageURL ? imageURL : user.profilePicture}
+              alt="user-avatar"
+              height={200}
+              width={200}
+            />
+          ) : (
+            <div className="d-flex align-items-center justify-content-center rounded-circle bg-warning mx-auto mb-3" style={{ height: 200, width: 200 }}>
+              <Person size={100} />
+            </div>
+          )}
 
           {error && <small className="text-danger text-center">{error}</small>}
 
