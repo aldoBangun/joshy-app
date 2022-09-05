@@ -1,6 +1,7 @@
 import EditProfileCandidate from "./EditProfileCandidate";
 import EditProfileCompany from "./EditProfileCompany";
 import { useSelector } from "react-redux";
+import withRouteGuard from "../../hoc/withRouteGuard";
 
 const EditProfile = () => {
   const currentUser = useSelector(state => state.currentUser.user)
@@ -9,5 +10,5 @@ const EditProfile = () => {
   return <EditProfileCandidate />
 }
 
-
-export default EditProfile
+const EditProfileWithRouteGuard = withRouteGuard(EditProfile)
+export default EditProfileWithRouteGuard

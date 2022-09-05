@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { register } from "../features/thunks/auth";
+import withNoAuth from "../hoc/withNoAuth";
 
 const RegisterCompany = () => {
-  const navigate = useNavigate();
-  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const loading = useSelector(state => state.loading.isLoading)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,11 +19,10 @@ const RegisterCompany = () => {
 
   const user = {
     roleId: "1",
-    name,
     email,
     phonenumber: phone,
-    position,
-    companyName,
+    companyField: position,
+    name: companyName,
     password
   }
 
@@ -36,14 +35,7 @@ const RegisterCompany = () => {
     }
 
     dispatch(register(user));
-    navigate("/login");
   };
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  });
 
   return (
     <div className="Login">
@@ -128,8 +120,9 @@ const RegisterCompany = () => {
                     variant="warning"
                     size="lg"
                     type="submit"
+                    disabled={loading}
                   >
-                    Daftar
+                    {loading ? 'Mendaftar' : 'Daftar'}
                   </Button>
                 </div>
 
@@ -164,4 +157,5 @@ const RegisterCompany = () => {
   );
 };
 
-export default RegisterCompany;
+const RegisterCompanyWithNoAuth = withNoAuth(RegisterCompany)
+export default RegisterCompanyWithNoAuth;

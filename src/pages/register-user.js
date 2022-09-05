@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../features/thunks/auth";
+import withNoAuth from "../hoc/withNoAuth";
 
 const RegisterUser = () => {
-  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const loading = useSelector(state => state.loading.isLoading)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -32,14 +32,7 @@ const RegisterUser = () => {
     }
 
     dispatch(register(user));
-    navigate("/login");
   };
-
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  });
 
   return (
     <div className="Login">
@@ -112,8 +105,9 @@ const RegisterUser = () => {
                     variant="warning"
                     size="lg"
                     type="submit"
+                    disabled={loading}
                   >
-                    Daftar
+                    {loading ? 'Mendaftar' : 'Daftar'}
                   </Button>
                 </div>
                 <Link to="/register-company" className="text-decoration-none">
@@ -146,4 +140,5 @@ const RegisterUser = () => {
   );
 };
 
-export default RegisterUser;
+const RegisterUserWithNoAuth = withNoAuth(RegisterUser)
+export default RegisterUserWithNoAuth;

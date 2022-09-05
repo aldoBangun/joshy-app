@@ -13,7 +13,7 @@ const CandidatePortofolioList = ({ portofolios }) => (
         ))}
       </Row>
     ) : (
-      <p>No portofolios yet</p>
+      <p className="text-secondary">No portofolios yet</p>
     )}
   </>
 )

@@ -9,7 +9,9 @@
 .card_profile img {
   height: 150px;
   width: 150px;
-  margin-left: 6.4em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .button_add_photo {
   margin-top: -300px;

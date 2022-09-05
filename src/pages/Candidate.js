@@ -4,6 +4,7 @@ import CandidateSearchBar from "../components/candidate/CandidateSearchBar";
 import CandidateList from "../components/candidate/CandidateList";
 // import CandidatePagination from "../components/candidate/CandidatePagination";
 import React from "react";
+import withRouteGuard from "../hoc/withRouteGuard";
 
 const Candidate = () => {
   const [sortBy, setSortBy] = React.useState('')
@@ -21,4 +22,5 @@ const Candidate = () => {
   )
 }
 
-export default Candidate;
+const CandidateWithRouteGuard = withRouteGuard(Candidate)
+export default CandidateWithRouteGuard;
