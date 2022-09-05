@@ -1,15 +1,18 @@
-import { Card, Image, Button } from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 import { GeoAlt, Person } from "react-bootstrap-icons";
 import ProfileCandidateSkills from "./ProfileCandidateSkills";
 import ProfileCandidateSocials from "./ProfileCandidateSocials";
 import { useSelector } from "react-redux";
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const ProfileCandidateInfo = (props) => {
   const loggedInUser = useSelector(state => state.currentUser.user);
   const loggedInUserId = loggedInUser?.id;
   const loggedInUserRole = loggedInUser?.roleId;
-  // const isSameUser = loggedInUserId === props?.id;
-  // const isRecruiter = loggedInUserRole === 1;
+  const isSameUser = loggedInUserId === props?.id;
+  const isRecruiter = loggedInUserRole === 1;
+  const { userId } = useParams()
 
   const { 
     profilePicture,
@@ -57,8 +60,8 @@ const ProfileCandidateInfo = (props) => {
           <p>{description ? description : 'No description'}</p>
         </div>
         <div className="d-grid">
-          {/* {isRecruiter && <Button>Hire</Button>}
-          {isSameUser && <Button>Edit Profile</Button>} */}
+          {isRecruiter && <Link to={`/hire/${userId}`} className="btn btn-primary">Hire</Link>}
+          {isSameUser && <Link to="/profile/edit" className="btn btn-primary" >Edit Profile</Link>}
         </div>
         <ProfileCandidateSkills skills={skills} />
         <ProfileCandidateSocials email={email} instagram={instagram} github={github} />

@@ -5,3 +5,24 @@
 .dropdown-toggle.arrow-left::after {
   display: none;
 }
+
+.full-height {
+  height: calc(100vh - var(--nav-height));
+}
+
+.list-style-none {
+  list-style: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.label-edit-avatar:hover {
+  color: var(--bs-primary);
+}
+
+.edit-profile-avatar {
+  border: 2px solid var(--bs-warning);
+  object-fit: cover;
+}

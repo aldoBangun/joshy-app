@@ -1,0 +1,11 @@
+.profile-cover {
+  margin-bottom: 5rem;
+}
+
+.profile-picture {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid var(--bs-warning);
+}

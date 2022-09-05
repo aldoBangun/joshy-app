@@ -53,8 +53,11 @@ const NavUser = () => {
           <Avatar image={loggedInUser?.profilePicture}/>
         </Dropdown.Toggle>
         <Dropdown.Menu>
+          <Dropdown.Item onClick={() => navigate(`/profile/${loggedInUser.id}`)}>
+            Profile
+          </Dropdown.Item>
           <Dropdown.Item onClick={() => navigate('/candidates')}>
-            Search
+            Browse
           </Dropdown.Item>
           <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
         </Dropdown.Menu>

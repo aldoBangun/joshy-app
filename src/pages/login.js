@@ -1,29 +1,20 @@
-import React, { useEffect, useState} from "react";
+import { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/thunks/auth";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import withNoAuth from "../hoc/withNoAuth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const authSelector = useSelector((state) => state.auth)
   const loading = useSelector(state => state.loading.isLoading)
-  const navigate = useNavigate()
 
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(login({ email, password }))
   }
-
-  useEffect(() => {
-    const { token } = authSelector
-
-    if (token) {
-      navigate("/")
-    }
-  }, [navigate, authSelector])
 
   return (
     <div className="Login">
@@ -61,7 +52,7 @@ const Login = () => {
                 </Form.Group>
                 <div className="d-grid">
                   <Button className="text-white" variant="warning" size="lg" type="submit" disabled={loading}>
-                    {loading ? 'Masuk...' : 'Masuk'}
+                    {loading ? 'Mamasuki' : 'Masuk'}
                   </Button>
                 </div>
 
@@ -84,4 +75,5 @@ const Login = () => {
   );
 };
 
-export default Login;
+const LoginWithNoAuth = withNoAuth(Login)
+export default LoginWithNoAuth;

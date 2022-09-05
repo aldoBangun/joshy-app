@@ -4,13 +4,20 @@ const CandidateExperienceList = (props) => {
   const { experiences } = props;
 
   return (
-    <div>
-      {
-        experiences.map(experience => (
-          <CandidateExperienceItem key={experience.id} {...experience} />
-        ))
-      }
-    </div>
+    <>
+      {experiences?.length ? (
+
+        (<div>
+          {
+            experiences.map(experience => (
+              <CandidateExperienceItem key={experience.id} {...experience} />
+            ))
+          }
+        </div>)
+      ) : (
+        <p className="text-secondary">No experience yet</p>
+      )}
+    </>
   )
 }
 
