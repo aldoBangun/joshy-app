@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUser } from "../../features/thunks/user";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
+import ProfileCompany from "../../components/profile/ProfileCompany";
 
 const ProfileDetails = () => {
   const dispatch = useDispatch()
@@ -15,11 +16,10 @@ const ProfileDetails = () => {
   
   return (
     <>
-      { (user && user?.roleId === 2) ? (<ProfileCandidate />) : (
-          <div className="full-height container">
-            <h1>Profile Company</h1>
-          </div>
-        )
+      {
+        (user && user?.roleId === 2) 
+          ? (<ProfileCandidate />) 
+          : (<ProfileCompany />)
       }
     </>
   )

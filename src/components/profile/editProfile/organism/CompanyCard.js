@@ -1,15 +1,17 @@
 import React from "react";
 import { Card, Form } from "react-bootstrap";
-// icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen, faLocationDot } from "@fortawesome/free-solid-svg-icons";
-// css
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styles from "../../../../css/editProfile.module.css";
 
 const CompanyCard = () => {
+  const profile = useSelector(state => state.currentUser.user)
+
   return (
     <>
-      <Card className={`ms-5 shadow rounded py-5 ${styles.card_profile}`}>
+      <Card className={`shadow rounded py-5 ${styles.card_profile}`}>
         <Card.Img
           variant="top"
           className="rounded-circle mt-4 border border-4 border-warning"
@@ -32,6 +34,10 @@ const CompanyCard = () => {
           <FontAwesomeIcon icon={faLocationDot} className="me-2 text-primary" />
           Singapore
         </span>
+
+        <div className="d-grid px-4">
+          <Link to={`/profile/${profile.id}`} className="btn btn-secondary">Kembali</Link>
+        </div>
       </Card>
     </>
   );
