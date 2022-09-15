@@ -3,14 +3,13 @@ import React from "react";
 import styles from "../../../css/landing.module.css";
 // image
 import articleImgOne from "../../../images/articleOne.png";
-// icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const SectionOne = () => {
   return (
     <>
-      <div className={styles.content}>
+      <div className={`${styles.content} py-3`}>
         <div className={`row ${styles.row_content}`}>
           <div className="col-6 d-flex justify-content-center d-flex align-items-center">
             <div className={styles.rectangle_large}>

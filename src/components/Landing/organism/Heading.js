@@ -1,7 +1,5 @@
 import React from "react";
-// css
 import styles from "../../../css/landing.module.css";
-//image
 import headImg from "../../../images/home.png";
 
 const Heading = () => {
@@ -14,12 +12,12 @@ const Heading = () => {
               <h1 className={`mx-5 mb-4 lh-base ${styles.text_heading}`}>
                 Talenta terbaik negri untuk perubahan revolusi 4.0
               </h1>
-              <p className="fs-5 text-muted mx-5 mb-5">
+              <p className="fs-5 text-muted mx-5 mb-3">
                 Joshy membantu mempertemukan pelamar dan perusahaan untuk bekerja sama. Wujudkan impianmu meraih kesuksesan.
               </p>
               <button
                 type="button"
-                className="btn btn-primary py-3 px-5 fw-bold mx-5 mt-5"
+                className="btn btn-primary position-relative z-5 py-3 px-5 fw-bold mx-5 mt-5"
               >
                 Mulai Dari Sekarang
               </button>
