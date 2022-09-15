@@ -51,7 +51,7 @@ const SectionThree = () => {
             >
               Mulai dari sekarang
             </Button>
-            <h1 className="mt-4 px-5 text-white">Lorem ipsum dolor sit amet</h1>
+            <h1 className="mt-4 px-5 text-white">Tunggu Apa Lagi?</h1>
           </Container>
         </>
       )}

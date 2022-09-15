@@ -24,7 +24,7 @@ const SectionOne = () => {
             <div>
               <h1 className="my-5 lh-base">
                 Kenapa harus mencari talent <br />
-                di <b className="text-primary ms-1">JHOSY</b>
+                di <b className="text-primary ms-1">Joshy</b>
               </h1>
               <div className="d-flex flex-column">
                 <span className="mb-5 text-muted">
@@ -33,7 +33,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Lebih dari 1000 perusahaan sudah bekerja sama dengan terdaftar
                 </span>
                 <span className="mb-5 text-muted">
                   <FontAwesomeIcon
@@ -41,7 +41,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Lebih dari 200.000 talent yang siap bekerja
                 </span>
                 <span className="mb-5 text-muted">
                   <FontAwesomeIcon
@@ -49,7 +49,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Sistem aplikasi yang mudah digunakan
                 </span>
                 <span className="mb-5 text-muted">
                   <FontAwesomeIcon
@@ -57,7 +57,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Customer Service yang siap membantu 24/7
                 </span>
               </div>
             </div>

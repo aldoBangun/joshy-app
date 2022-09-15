@@ -12,8 +12,7 @@ const Footer = () => {
           <div className="my-5">
             <h1 className="text-warning mb-4">Jhosy</h1>
             <span className="text-white d-block">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In euismod
-              ipsum et dui rhoncus auctor.
+              Joshy membantu mempertemukan pelamar dan perusahaan untuk bekerja sama. Wujudkan impianmu meraih kesuksesan.
             </span>
             <hr size="7" className="bg-light" />
             <p className="float-end ms-5 mt-4 text-white">Email</p>

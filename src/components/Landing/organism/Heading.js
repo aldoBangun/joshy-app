@@ -15,8 +15,7 @@ const Heading = () => {
                 Talenta terbaik negri untuk perubahan revolusi 4.0
               </h1>
               <p className="fs-5 text-muted mx-5 mb-5">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                euismod ipsum et dui rhoncus auctor.
+                Joshy membantu mempertemukan pelamar dan perusahaan untuk bekerja sama. Wujudkan impianmu meraih kesuksesan.
               </p>
               <button
                 type="button"

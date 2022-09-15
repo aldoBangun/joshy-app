@@ -16,8 +16,7 @@ const SectionTwo = () => {
             <div className="mx-5 px-5">
               <h1>Skill talent</h1>
               <p className="text-muted fs-5 my-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                euismod ipsum et dui rhoncus auctor.
+                Talent yang ada memiliki skill yang bermacam - macam, baik Frontend maupun Backend
               </p>
               <div className="row">
                 <div className="col-6 ps-5">
