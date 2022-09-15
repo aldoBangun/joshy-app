@@ -132,16 +132,16 @@ REACT_APP_CRYPTO_SECRET_KEY=example
     <td style='text-align: center; background-color: #6661; font-weight: 600'>Register Page (Candidate)</td>
   </tr>
   <tr>
-    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1662378007/joshy-app/README/Login_awmrf7.png" alt="login" width=100%></td>
-    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1662378008/joshy-app/README/Register_Candidate_m7zujh.png" alt ="register-candidate" width=100%/></td>
+    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1663229139/joshy-app/README/Login_lwabmq.png" alt="login" width=100%></td>
+    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1663229140/joshy-app/README/Reg_Candidate_qo0knl.png" alt ="register-candidate" width=100%/></td>
   </tr>
    <tr>
     <td style='text-align: center; background-color: #6661; font-weight: 600'>Register Page (Recruiter)</td>
     <td style='text-align: center; background-color: #6661; font-weight: 600'>Landing Page</td>
   </tr>
   <tr>
-    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1662378008/joshy-app/README/Register_Recruiter_fjqz6v.png" alt="register-recruiter" width=100%></td>
-    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1662378009/joshy-app/README/Landing_Page_aybzvv.png" alt="landing-page" width=100%/></td>
+    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1663229139/joshy-app/README/Reg_Company_ey7zhc.png" alt="register-recruiter" width=100%></td>
+    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1663229143/joshy-app/README/Landing_s8wn8n.png" alt="landing-page" width=100%/></td>
   </tr>
   <tr>
     <td style='text-align: center; background-color: #6661; font-weight: 600'>Search Candidate (Recruiter)</td>
