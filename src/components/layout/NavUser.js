@@ -4,6 +4,7 @@ import Avatar from "./Avatar";
 import { logout } from "../../features/slices/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import NotificationList from "../notification/NotificationList";
 
 const NavUser = () => {
   const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const NavUser = () => {
 
   return (
     <Nav>
-      <Dropdown align="center">
+      <Dropdown align="end">
         <Dropdown.Toggle
           className="bg-transparent text-bg-light border-0 remove-arrow"
           id="dropdown-basic"
@@ -25,9 +26,8 @@ const NavUser = () => {
           <Bell color="gray" />
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          <Dropdown.Item>
-            No Notifications
-          </Dropdown.Item>
+          <h5 className="px-3">Notifications</h5>
+          <NotificationList />
         </Dropdown.Menu>
       </Dropdown>
 
