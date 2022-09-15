@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../features/thunks/auth";
 import withNoAuth from "../hoc/withNoAuth";
+import AuthImage from "../components/UI/AuthImage";
 
 const RegisterUser = () => {
   const dispatch = useDispatch();
@@ -40,18 +41,13 @@ const RegisterUser = () => {
         <Container>
           <Row className="d-flex flex-row">
             <Col className="d-grid d-none d-sm-table-cell">
-              <img
-                src="https://s3-alpha-sig.figma.com/img/6a5f/6308/b9de1e2e658498c339524384fbdc112d?Expires=1659312000&Signature=BysvwnN3EAnxMbPPnKRL8kyoKvvORuL1HtOOQhiCoWUesTQBjksoKssWtZ8RqrSkNwngmZGe9PI3uCVV30NmznWAe~9ZviS-EezkqS7ntahaEOnyQHBZ4z23flIVufSF~dK9gMYtMf3WvE8A8P6pjBJnWAWI6NBnlbP83PS~uY~vvhze7003wL4nJ-81ARctad6-RSpbKlo3r7V3QwhX3n1Hitu8bqhxlNSgC1jv4LQ56E5XHh5xWR-H8m1d91SQa~ukBnsNk9cmt9TzTFnkLjluhyzeemABRF0dJaeNJVSKET8yPpGoBCCqHq7uYhCQgBzcTjMhxpDPXdQ-Ce3Vng__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
-                className="img-fluid rounded"
-                alt=""
-              />
+              <AuthImage />
             </Col>
             <Col className="d-grid p-5 align-items-center">
               <Form onSubmit={handleRegister}>
                 <h1 className="mb-3">Halo, Pewpeople</h1>
                 <p className="mb-5">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                  euismod ipsum et dui rhoncus auctor.
+                  Mulai berkarir bersama Joshy
                 </p>
                 <Form.Group className="mb-4" controlId="formBasicName">
                   <Form.Label>Nama</Form.Label>

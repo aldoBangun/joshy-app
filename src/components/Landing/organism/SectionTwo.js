@@ -1,9 +1,5 @@
-import React, { useEffect } from "react";
-//css
 import styles from "../../../css/landing.module.css";
-//image
 import articleImgTwo from "../../../images/articleTwo.png";
-// icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,8 +12,7 @@ const SectionTwo = () => {
             <div className="mx-5 px-5">
               <h1>Skill talent</h1>
               <p className="text-muted fs-5 my-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In
-                euismod ipsum et dui rhoncus auctor.
+                Talent yang ada memiliki skill yang bermacam-macam, baik Frontend maupun Backend
               </p>
               <div className="row">
                 <div className="col-6 ps-5">
@@ -102,9 +97,6 @@ const SectionTwo = () => {
             <div
               className={`bg-warning position-absolute ${styles.box_articleTwo}`}
             ></div>
-            {/* <div
-                className={`bg-primary position-absolute ${styles.rectangle_small}`}
-              ></div> */}
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import currentUser from "../features/slices/currentUser";
 import portofolio from '../features/slices/portofolio'
 import experience from "../features/slices/experience";
 import user from '../features/slices/user'
+import notification from "../features/slices/notification";
 
 const reducers = combineReducers({
   auth,
@@ -14,7 +15,8 @@ const reducers = combineReducers({
   currentUser,
   portofolio,
   experience,
-  user
+  user,
+  notification
 })
 
 export default reducers;

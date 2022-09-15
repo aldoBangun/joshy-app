@@ -3,14 +3,13 @@ import React from "react";
 import styles from "../../../css/landing.module.css";
 // image
 import articleImgOne from "../../../images/articleOne.png";
-// icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 
 const SectionOne = () => {
   return (
     <>
-      <div className={styles.content}>
+      <div className={`${styles.content} py-3`}>
         <div className={`row ${styles.row_content}`}>
           <div className="col-6 d-flex justify-content-center d-flex align-items-center">
             <div className={styles.rectangle_large}>
@@ -24,7 +23,7 @@ const SectionOne = () => {
             <div>
               <h1 className="my-5 lh-base">
                 Kenapa harus mencari talent <br />
-                di <b className="text-primary ms-1">JHOSY</b>
+                di <b className="text-primary ms-1">Joshy</b>
               </h1>
               <div className="d-flex flex-column">
                 <span className="mb-5 text-muted">
@@ -33,7 +32,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Lebih dari 1000 perusahaan sudah bekerja sama dengan terdaftar
                 </span>
                 <span className="mb-5 text-muted">
                   <FontAwesomeIcon
@@ -41,7 +40,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Lebih dari 200.000 talent yang siap bekerja
                 </span>
                 <span className="mb-5 text-muted">
                   <FontAwesomeIcon
@@ -49,7 +48,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Sistem aplikasi yang mudah digunakan
                 </span>
                 <span className="mb-5 text-muted">
                   <FontAwesomeIcon
@@ -57,7 +56,7 @@ const SectionOne = () => {
                     size="xl"
                     className="me-3 text-primary"
                   />
-                  Lorem ipsum dolor sit amet.
+                  Customer Service yang siap membantu 24/7
                 </span>
               </div>
             </div>
