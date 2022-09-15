@@ -38,9 +38,14 @@ const FormPortfolio = () => {
   })
 
   const handleImageUpload = (e) => {
-    const imageFile = e.target.files[0]
-    if (!imageFile) return setImageFile('')
+    const imageFile = e?.target?.files?.[0] || ''
 
+    if (!imageFile) {
+      setImageFile('')
+      formik.setFieldValue('appPicture', '')
+      return
+    }
+    
     setImageFile(imageFile)
     formik.setFieldValue('appPicture', e.target.value)
   }
