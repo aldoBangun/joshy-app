@@ -26,3 +26,29 @@
   border: 2px solid var(--bs-warning);
   object-fit: cover;
 }
+
+.image-overlay {
+  position: relative;
+}
+
+.image-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--bs-primary);
+  opacity: .75;
+}
+
+.image-overlay::before {
+  content: 'Temukan developer berbakat & terbaik di berbagai bidang keahlian';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  padding: 0 5rem;
+}
