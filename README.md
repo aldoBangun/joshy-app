@@ -164,7 +164,7 @@ REACT_APP_CRYPTO_SECRET_KEY=example
     <td style='text-align: center; background-color: #6661; font-weight: 600'>My Profile (Candidate)</td>
   </tr>
   <tr>
-    <td><image src="#" alt="candidate-hire" width=100%></td>
+    <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1663320253/joshy-app/README/hirePage_nbjrb6.png" alt="candidate-hire" width=100%></td>
     <td><image src="https://res.cloudinary.com/nocturncloud/image/upload/v1662378007/joshy-app/README/Profile_Candidate_k5eh0y.png" alt="my-profile-candidate" width=100%></td>
   </tr>
   <tr>
